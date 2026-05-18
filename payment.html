@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - MARIOMART</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: black;
+            margin: 0;
+            padding: 20px;
+            color: white;
+        }
+        .payment-container {
+            max-width: 500px;
+            margin: 50px auto;
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+        }
+        h1 {
+            color: orange;
+            text-align: center;
+        }
+        .order-summary {
+            background: #333;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .cart-item-summary {
+            border-bottom: 1px solid #555;
+            padding: 10px 0;
+        }
+        .cart-item-summary:last-child {
+            border-bottom: none;
+        }
+        .item-name {
+            font-weight: bold;
+            color: orange;
+        }
+        .total {
+            font-size: 24px;
+            color: orange;
+            text-align: center;
+            padding: 15px;
+            background: #2a2a2a;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .payment-details {
+            margin: 20px 0;
+        }
+        .payment-details input {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 8px;
+            background: #333;
+            color: white;
+            box-sizing: border-box;
+        }
+        .payment-details input::placeholder {
+            color: #888;
+        }
+        button {
+            background: orange;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 25px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: orangered;
+        }
+        .back-btn {
+            background: #333;
+            margin-top: 10px;
+        }
+        .back-btn:hover {
+            background: #555;
+        }
+        .error {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+            display: none;
+        }
+        .success {
+            color: green;
+            text-align: center;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="payment-container">
+        <h1>💳 Payment Checkout</h1>
+        
+        <div class="order-summary" id="orderSummary"></div>
+        
+        <div class="total" id="totalAmount"></div>
+        
+        <div class="payment-details">
+            <h3>Payment Details</h3>
+            <input type="text" id="cardName" placeholder="Cardholder Name" required>
+            <input type="text" id="cardNumber" placeholder="Card Number" maxlength="16" required>
+            <input type="text" id="expiryDate" placeholder="MM/YY" maxlength="5" required>
+            <input type="text" id="cvv" placeholder="CVV" maxlength="3" required>
+        </div>
+        
+        <div class="error" id="errorMsg">Please fill in all payment details</div>
+        <div class="success" id="successMsg">Payment successful! Redirecting...</div>
+        
+        <button id="confirmPayment">Confirm Payment</button>
+        <button class="back-btn" id="backToCart">← Back to Cart</button>
+    </div>
+
+    <script>
+        // Load cart data from localStorage
+        const paymentData = JSON.parse(localStorage.getItem('pendingPayment'));
+        
+        // Verify the total matches cart calculation
+        function verifyTotal() {
+            if (!paymentData || !paymentData.cart) return 0;
+            const calculatedTotal = paymentData.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            return calculatedTotal;
+        }
+        
+        // Display order summary
+        function displayOrderSummary() {
+            if (!paymentData || !paymentData.cart || paymentData.cart.length === 0) {
+                document.getElementById('orderSummary').innerHTML = '<p style="text-align: center;">No items in cart</p>';
+                document.getElementById('totalAmount').innerHTML = '₦0';
+                return;
+            }
+            
+            let itemsHtml = '<h3>Order Summary:</h3>';
+            let runningTotal = 0;
+            
+            paymentData.cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                runningTotal += itemTotal;
+                itemsHtml += `
+                    <div class="cart-item-summary">
+                        <div class="item-name">${item.name}</div>
+                        <div>Size: ${item.size} | Quantity: ${item.quantity}</div>
+                        <div>₦${item.price.toLocaleString()} × ${item.quantity} = <strong>₦${itemTotal.toLocaleString()}</strong></div>
+                    </div>
+                `;
+            });
+            
+            document.getElementById('orderSummary').innerHTML = itemsHtml;
+            
+            // Use the total from paymentData (should match runningTotal)
+            const displayTotal = paymentData.total || runningTotal;
+            document.getElementById('totalAmount').innerHTML = `Total Amount: ₦${displayTotal.toLocaleString()}`;
+            
+            // Verify that cart total matches payment total
+            if (Math.abs(runningTotal - paymentData.total) > 0.01) {
+                console.warn('Total mismatch! Cart total:', runningTotal, 'Payment total:', paymentData.total);
+                // Fix it by using the calculated total
+                paymentData.total = runningTotal;
+                localStorage.setItem('pendingPayment', JSON.stringify(paymentData));
+                document.getElementById('totalAmount').innerHTML = `Total Amount: ₦${runningTotal.toLocaleString()}`;
+            }
+        }
+        
+        // Process payment
+        function processPayment() {
+            // Get payment details
+            const cardName = document.getElementById('cardName').value.trim();
+            const cardNumber = document.getElementById('cardNumber').value.trim();
+            const expiryDate = document.getElementById('expiryDate').value.trim();
+            const cvv = document.getElementById('cvv').value.trim();
+            
+            // Validate inputs
+            if (!cardName || !cardNumber || !expiryDate || !cvv) {
+                const errorMsg = document.getElementById('errorMsg');
+                errorMsg.style.display = 'block';
+                setTimeout(() => {
+                    errorMsg.style.display = 'none';
+                }, 3000);
+                return;
+            }
+            
+            // Validate card number (simple check)
+            if (cardNumber.length < 13 || cardNumber.length > 16) {
+                const errorMsg = document.getElementById('errorMsg');
+                errorMsg.textContent = 'Invalid card number';
+                errorMsg.style.display = 'block';
+                setTimeout(() => {
+                    errorMsg.style.display = 'none';
+                    errorMsg.textContent = 'Please fill in all payment details';
+                }, 3000);
+                return;
+            }
+            
+            // Validate CVV
+            if (cvv.length < 3) {
+                const errorMsg = document.getElementById('errorMsg');
+                errorMsg.textContent = 'Invalid CVV';
+                errorMsg.style.display = 'block';
+                setTimeout(() => {
+                    errorMsg.style.display = 'none';
+                    errorMsg.textContent = 'Please fill in all payment details';
+                }, 3000);
+                return;
+            }
+            
+            // Process payment
+            const totalAmount = paymentData ? paymentData.total : 0;
+            
+            // Show success message
+            const successMsg = document.getElementById('successMsg');
+            successMsg.style.display = 'block';
+            
+            // Disable confirm button to prevent double submission
+            const confirmBtn = document.getElementById('confirmPayment');
+            confirmBtn.disabled = true;
+            confirmBtn.style.opacity = '0.5';
+            
+            // Clear cart from localStorage
+            localStorage.removeItem('cart');
+            localStorage.removeItem('pendingPayment');
+            
+            // Redirect after 2 seconds
+            setTimeout(() => {
+                alert(`Payment of ₦${totalAmount.toLocaleString()} completed successfully!\nThank you for shopping with MARIOMART!`);
+                window.location.href = 'homepage.html';
+            }, 2000);
+        }
+        
+        // Initialize page
+        displayOrderSummary();
+        
+        // Add event listeners
+        document.getElementById('confirmPayment').addEventListener('click', processPayment);
+        
+        document.getElementById('backToCart').addEventListener('click', function() {
+            window.location.href = 'homepage.html';
+        });
+        
+        // Format card number input
+        document.getElementById('cardNumber').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 16) value = value.slice(0, 16);
+            e.target.value = value;
+        });
+        
+        // Format expiry date
+        document.getElementById('expiryDate').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length >= 2) {
+                value = value.slice(0, 2) + '/' + value.slice(2, 4);
+            }
+            e.target.value = value;
+        });
+        
+        // Format CVV
+        document.getElementById('cvv').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 3) value = value.slice(0, 3);
+            e.target.value = value;
+        });
+    </script>
+</body>
+</html>

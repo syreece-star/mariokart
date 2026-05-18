@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            margin: 0;
+            background: black; 
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        header{
+            display: flex;
+            background: orange;
+            color: white;
+            padding-left: 20px;
+            position: fixed;
+            z-index: 1;
+            right: 0;
+            left: 0;
+            .menu{
+            margin-top: 30px;
+        }
+        h1{
+            margin-left: 30vw;
+        }
+        }
+        .search{
+            background: black;
+            padding-top: 10px;
+            margin-top: 15px;
+             padding:15px;
+             align-items:center;
+            position: fixed;
+            right: 0;
+            left: 0;
+            z-index: 1;
+            #search{
+                flex:1;
+                width: 70%;
+                height:45px;
+                border:none;
+                border-radius:10px;
+                padding:0 15px;
+                background:#333;
+                color:white;
+                outline:none;
+           
+        }
+        #search::placeholder{
+            padding-left: 5px;
+        }
+        button{
+            margin-left: 10px;
+            background: rgb(24, 24, 24);
+            color: aliceblue;
+            padding: 10px 20px 12px 20px;
+            border-radius: 20px;
+            box-shadow: 2px 2px 3px 2px rgb(51, 50, 50);
+            cursor: pointer;
+        }
+            button:hover{
+                background: orange;
+                box-shadow: 2px 2px 3px 2px rgb(51, 50, 50);
+                transition: 0.8s;
+            }
+        .cart{
+            margin-left: 10px;
+            background: orange;
+            color: aliceblue;
+            padding: 5px 15px 9px 15px;
+            border-radius: 20px;
+            box-shadow: 2px 2px 3px 2px rgb(51, 50, 50);
+            cursor: pointer;
+        }
+        }
+        
+.slider {
+  width: 100%;
+  height: 80vh;
+  overflow: hidden;
+  position: relative;
+}
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 70vh;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+.slide.active {
+  opacity: 1;
+}
+.caption {
+  position: absolute;
+  top: 40%;
+  left: 8%;
+  color: orangered;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s ease;
+  font-weight: bold;
+}
+
+.slide.active .caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.caption h1 {
+  font-size: 4vw;
+  margin: 0;
+}
+
+.caption p {
+  font-size: 2vw;
+}
+.btn {
+  display: inline-block;
+  background: orange;
+  width: fit-content;
+  padding: 12px 25px;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: 90px;
+}
+.dots {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+}
+
+.dot {
+  
+  height: 1.5vw;
+  width: 1.5vw;
+  background: orange;
+  background:  white;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 5px;
+  opacity: 0.5;
+}
+.dot.active {
+  opacity: 1;
+  background: orange;
+}
+.next-container{
+    margin-top: 75vh;
+    margin-left: 20px;
+    position: absolute;
+    font-weight: bold;
+}
+.shop{
+    color: orange;
+    padding-left: 20px;
+}
+.arrow{
+    margin-left: 60vw;
+    background: orange;
+    color: aliceblue;
+    padding: 8px 15px 8px 15px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 18px;
+}
+.arrow:hover{
+    padding: 10px 18px 10px 18px;
+    transition: 0.4s;
+    background: orangered;
+}
+    .category-sec{
+        width: 100%;
+    }
+    .category, .category-1{
+        display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+    }
+
+    .products:hover, .productss:hover, .productsss:hover, .productsssss:hover, .productssssa:hover, .productssssb:hover {
+    transform:translateY(-10px);
+    transition: 0.8s;
+}
+   
+    .products, .productss, .productsss, .productsssss, .productssssa, .productssssb {
+        margin-top: 10px;
+        background: orange;
+        width: 25vw;
+        height: 70px;
+        padding: 15px;
+        border-radius: 15px;
+        cursor: pointer;
+        color: black;
+    }
+    .productss{
+        background: rgb(235, 219, 0);
+    }
+    .productsss{
+        background: rgb(255, 242, 0);
+    }
+    .productssssa{
+        background: rgb(255, 106, 0);
+    }
+    .productsssss{
+        background: rgb(172, 157, 1);
+    }
+    a{
+        text-decoration: none;
+        color: black;
+    }
+    .container-1{
+        margin-top: 90px;
+    }
+    .quality{
+        background: orange;
+        text-align: center;
+        width: 90vw;
+        height: 300px;
+        margin-left: 10px;
+        margin-top: 20px;
+        padding-top: 10px;
+        border-radius: 10px;
+        box-shadow: 3px 3px 3px 7px rgb(46, 43, 43, 0.5);
+        overflow: hidden;
+        
+        strong{
+            background: rgb(248, 176, 43, 0.9);
+            color: aliceblue;
+            padding-left: 15px;
+            padding-right: 5px;
+            border-radius: 20px;
+        }
+        p{
+            background: orangered;
+            margin-left: 150px;
+            margin-right: 150px;
+            padding: 5px;
+            border-radius: 20px;
+            box-shadow: 2px 2px 2px 4px;
+        }
+        p:hover{
+            transform:translateY(-10px);
+            transition: 0.8s;
+        }
+        img{
+            width: 50%;
+            height: 80%;
+            margin-left: 310px;
+        }
+        img:hover{
+            transform:translateX(-90px);
+            transition: 0.8s;
+        }
+    }
+    .quality-1{
+        display: flex;
+        background: orangered;
+        width: 90vw;
+        height: 310px;
+        margin-left: 10px;
+        margin-top: 80px;
+        border-radius: 10px;
+        box-shadow: 3px 3px 3px 7px rgb(46, 43, 43, 0.5);
+        h2{
+            font-size: 18px;
+            margin-left: 70px;
+            margin-top: 100px;
+            span{
+                font-size: 15px;
+            }
+        }
+        
+            img{
+                width: 50%;
+                height: 100%;
+                
+            }
+            .circle{
+                background: orange;
+                height: 60px;
+                width: 60px;
+                color: orange;
+                border-radius: 10px 0px 50px 0px;
+                box-shadow: 2px 2px 3px rgb(22, 22, 22, 0.5);
+            }
+            .circle:hover{
+               height: 120px;
+                width: 160px;
+                border-radius: 10px 2px 100px 2px;
+            transition: 0.8s;  
+            }
+    }
+    
+    .quality-2{
+        display: flex;
+        background: rgb(251, 104, 51);
+        width: 90vw;
+        height: 310px;
+        margin-left: 10px;
+        margin-top: 50px;
+        border-radius: 10px;
+        box-shadow: 3px 3px 3px 7px rgb(46, 43, 43, 0.5);
+        overflow: hidden;
+        h2{
+            font-size: 18px;
+            margin-left: 20px;
+            margin-top: 100px;
+            span{
+                font-size: 15px;
+            }
+        }
+        
+            img{
+                width: 45%;
+                height: 100%;
+                
+            }
+            .circle{
+                margin-top: 220px;
+                background: orangered;
+                height: 90px;
+                width: 100px;
+                color: orangered;
+                padding-top: 30px;
+                border-radius: 50px 0px 10px 0px;
+                box-shadow: 7px 7px 7px 12px rgb(22, 22, 22, 0.5);
+            }
+    }
+    @media (max-width: 915px){
+        .circle{
+            img{
+                display: none;
+            }
+        }
+    }
+    .quality-3{
+        display: flex;
+        background: rgb(229, 255, 0, 0.4);
+        width: 90vw;
+        height: 310px;
+        margin-left: 10px;
+        margin-top: 50px;
+        border-radius: 10px;
+        box-shadow: 3px 3px 3px 7px rgb(46, 43, 43, 0.5);
+        h2{
+            font-size: 18px;
+            margin-left: 70px;
+            margin-top: 100px;
+            span{
+                font-size: 15px;
+            }
+        }
+        
+            img{
+                width: 50%;
+                height: 100%;
+                
+            }
+            .circle{
+                background: rgb(255, 213, 0, 0.6);
+                height: 310px;
+                width: 300px;
+                border-radius: 10px 0px 50px 0px;
+                box-shadow: 5px 2px 5px 7px rgb(22, 22, 22, 0.3);
+            }
+    }
+    .quality-4{
+        display: flex;
+        background: rgb(187, 131, 2);
+        width: 90vw;
+        height: 310px;
+        margin-left: 10px;
+        margin-top: 50px;
+        border-radius: 10px;
+        box-shadow: 3px 3px 3px 7px rgb(46, 43, 43, 0.5);
+        h2{
+            font-size: 18px;
+            margin-left: 70px;
+            margin-top: 100px;
+            span{
+                font-size: 15px;
+            }
+        }
+        
+            img{
+                width: 50%;
+                height: 100%;
+                
+            }
+            .circle{
+                background: orange;
+                height: 310px;
+                width: 440px;
+                border-radius: 10px 0px 350px 0px;
+                box-shadow: 5px 2px 5px 5px rgb(22, 22, 22, 0.3);
+            }
+    }
+    a{
+        text-decoration: none;
+    }
+    .stock-container{
+        margin-top: 100px;
+        p{
+            color: orange;
+            margin-left: 20px;
+        }
+        .see{
+            margin-left: 65vw;
+            background: rgb(46, 43, 43, 0.5);
+            color: orange;
+            padding: 10px;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+        .see:hover{
+            transform: scale(1.1);
+        }
+
+        .stock-1{
+            margin-top: 50px;
+            margin-left: 20px;
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .stock-items{
+           background: orange;
+            width: 270px;
+            height: 420px;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: 0.5s;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+             img{
+                width: 100%;
+                height: 220px;
+                object-fit: cover;
+                margin-bottom: 19px;
+            }
+            }
+            .items{
+                margin-left: 10px;
+                color: black;
+                font-size: 20px;
+                font-weight: bold;
+            }
+            .price{
+                margin-left: 10px;
+                color: white;
+                font-size: 18px;
+            }
+            .option{
+                display: flex;
+                margin-top: 15px;
+            }
+            .option span{
+                font-size: 15px;
+            }
+            select{
+                    margin-left: 10px;
+                    border: none;
+                    background: orange;
+                    cursor: pointer;
+                }
+            button{
+                width: 150px;
+                height: 40px;
+                border-radius: 40px;
+                border: none;
+                margin-top: 30px;
+                margin-left: 55px;
+                transition: transform(0.8);
+               cursor: pointer;
+            }
+            button:hover{
+                 color: aliceblue;
+                 background: black;
+                 transition: 0.8s;
+                 transform: scale(1.2);
+             }
+
+           }
+           .stock-items:hover{
+            transform: scale(1.1);
+            transition: 0.5s;
+            background: orangered;
+            select{
+                background: orangered;
+                transition: 0.6s;
+            }
+           }
+    
+            footer{
+                background:orange;
+                padding:50px 20px;
+                text-align:center;
+                color:black;
+            }
+
+            footer h1{
+                margin-bottom:20px;
+            }
+
+            footer p{
+                max-width:700px;
+                margin:auto;
+                line-height:1.7;
+            }
+
+            .top-btn{
+                display:inline-block;
+                margin-top:20px;
+                background:black;
+                color:white;
+                padding:12px 25px;
+                border-radius:30px;
+                text-decoration:none;
+            }
+
+            .footer-links{
+                margin-top:40px;
+            }
+
+            .footer-links h3{
+                margin:15px 0;
+            }
+
+
+    @media (min-width: 768px){
+        header{
+            h1{
+                margin-left: 42vw;
+            }
+        }
+       .search{
+        margin-bottom: 20px;
+         #search{
+            margin-left: 10vw;
+        }
+       }
+        .dot {
+            height: 0.8vw;
+            width: 0.8vw;
+            background: white;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 5px;
+            opacity: 0.5;
+        }
+        .arrow{
+            margin-left: 84vw;
+        }
+
+        .category{
+            margin-left: 12vw;
+            margin-top: 50px;
+        }
+        .category-1{
+            margin-top: 50px;
+        }
+        .large-scrn{
+            display: flex;
+        }
+        .products, .productss, .productsss, .productsssss, .productssssa, .productssssb{
+            margin-left: 10px;
+            width: 10vw;
+        }
+        .container-1{
+            display: flex;
+            .quality{
+                width: 40vw;
+                margin-left: 5vw;
+            }
+            .quality-1{
+                width: 40vw;
+                margin-left: 5vw;
+                margin-top: 20px;
+            }
+        }
+        .stock-container{
+            .see{
+                margin-left: 84vw;
+            }
+            .large-screen{
+                margin-bottom: 20vh;
+                 margin-left: 20px;
+                display: flex;
+                gap: 40px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .stock-1{
+             margin-top: 50px;
+   
+            .stock-items{
+            background: orange;
+            width: 20vw;
+            height: 480px;
+            padding: 2px;
+            border-radius: 8px;
+             img{
+                width: 100%;
+                height: 230px;
+                margin-bottom: 20px;
+                border-radius: 8px 8px 0px 0px;
+            }
+            .items{
+                margin: 8px;
+            }
+            strong{
+                margin-left: 10px;
+                color: white;
+                font-size: 18px;
+            }
+            .option{
+                display: flex;
+                margin-top: 15px;
+            }
+            
+            button{
+                width: 150px;
+                height: 40px;
+                border-radius: 40px;
+                border: none;
+                margin-top: 55px;
+                margin-left: 6vw;
+                transition: transform(0.8);
+               cursor: pointer;
+            }
+            
+            }
+            .stock-items:hover{
+                background: orangered;
+                transition: 0.5s;
+                select{
+                    background: orangered;
+                    transition: 0.7s;
+                }
+            }
+        }
+        }
+        .quality-2{
+            width: 60vw;
+            margin-bottom: 20vh;
+            transition: transform(0.8);
+            img{
+                width: 40%;
+            }
+            .circle{
+                width: 360px;
+                height: 290px;
+                margin-top: 10px;
+                border-radius: 50% 0px 10px 0px;
+                overflow: hidden;
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+        .quality:hover, .quality-1:hover, .see:hover{
+            transform: scale(1.2);
+            transition: 0.8s;
+        }
+        .quality-2:hover{
+            transform: scale(1.3);
+            transition: 0.8s;
+        }
+        .quality-3{
+            width: 60vw;
+            margin-bottom: 20vh;
+        }
+        .quality-3:hover{
+            transform: scale(1.2);
+            transition: 0.8s;
+        }
+        .quality-4{
+            width: 60vw;
+            margin-bottom: 20vh;
+        }
+        .quality-4:hover{
+            transform: scale(1.2);
+            transition: 0.8s;
+        }
+
+        footer{
+            .next h1{
+                font-size: 5vw;
+                sup{
+                    font-size: 2vw;
+                }
+            }
+        }
+    }
+
+/* ================= CART ================= */
+
+.cart{
+    margin-left: 10px;
+    background: orange;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    position: relative;
+    font-weight: bold;
+}
+
+#cart-count{
+    background: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 7px;
+    font-size: 12px;
+    position: absolute;
+    top: -8px;
+    right: -5px;
+}
+
+.cart-box{
+    position: fixed;
+    top: 100px;
+    right: -400px;
+    width: 320px;
+    max-height: 500px;
+    overflow-y: auto;
+    background: white;
+    border-radius: 15px;
+    padding: 15px;
+    z-index: 9999;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+    transition: 0.5s;
+}
+
+.cart-box.active{
+    right: 20px;
+}
+
+.cart-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid orange;
+    padding-bottom: 10px;
+}
+
+.cart-header h2{
+    margin: 0;
+    color: orange;
+}
+
+.close-cart{
+    font-size: 30px;
+    cursor: pointer;
+    color: red;
+    font-weight: bold;
+}
+
+.cart-item{
+    margin-top: 15px;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.cart-item h4{
+    margin: 0;
+    color: black;
+}
+
+.cart-item p{
+    margin: 5px 0;
+    color: grey;
+}
+
+.remove-btn{
+    background: red;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.remove-btn:hover{
+    background: darkred;
+}
+
+.cart-footer{
+    text-align: center;
+    margin-top: 20px;
+}
+
+#clearCart{
+    background: orange;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+}
+
+#clearCart:hover{
+    background: orangered;
+}
+
+     
+    </style>
+</head>
+<body>
+    <header>
+        <span class="menu">&#9776;</span>
+        <h1>MARIOKART</h1>
+    </header><br><br><br>
+    <div class="search"><input type="search" id="search" placeholder="Search for items">
+        <button>Search</button>
+        <button class="cart">&#128722; <span id="cart-count">0</span></button>
+    </div><br><br><br><br>
+
+
+
+
+    <!-- CART ICON -->
+   
+
+<!-- CART BOX -->
+<div class="cart-box" id="cartBox">
+
+    <div class="cart-header">
+        <h2>My Cart</h2>
+
+        <!-- CLOSE ICON -->
+        <span class="close-cart" id="closeCart">
+            &times;
+        </span>
+    </div>
+
+    <!-- SELECTED ITEMS -->
+    <div id="cartItems"></div>
+
+
+</div>
+
+
+    <div class="container">
+        <div class="banner-slider">
+
+        <div class="slide active" style="background-image: url('access.JPG');">
+            <div class="caption">
+            <h1>Cutting Tools</h1>
+            <p>Crafted for efficiency and style</p>
+            <a href="#" class="btn">Check</a>
+            </div>
+        </div>
+
+        <div class="slide" style="background-image: url('blender.JPG');">
+            <div class="caption">
+            <h1>BLENDER</h1>
+            <p>Built for efficiency and convenience</p>
+            <a href="#" class="btn">Check</a>
+            </div>
+        </div>
+
+        <div class="slide" style="background-image: url('oil.JPG');">
+            <div class="caption">
+            <h1>Groundnut Oil</h1>
+            <p>Carefully processed for purity and quality</p>
+            <a href="#" class="btn">Check</a>
+            </div>
+        </div>
+
+        <div class="slide" style="background-image: url('nescafe1.JPG');">
+            <div class="caption">
+            <h1>Nescafe</h1>
+            <p>Made from carefully selected coffee beans</p>
+            <a href="#" class="btn">Check</a>
+            </div>
+        </div>
+
+        <div class="slide" style="background-image: url('juice.JPG');">
+            <div class="caption">
+            <h1>Juice</h1>
+            <p>Offers a sweet taste anc essencial nutrients for everday enjoyment</p>
+            <a href="#" class="btn">Check</a>
+            </div>
+        </div>
+
+        <div class="dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+        </div>
+
+        <!--- CATEGORIES-->
+        <div class="next-container">
+            <section class="category-sec">
+                <div class="shop-1">
+                    <p class="shop">Shop by Category <span class="arrow">&#8250;</span></p>
+                </div>
+                
+               <div class="large-scrn">
+
+                 <div class="category">
+                    <a href="freshp.html"><div class="products">
+                        <p>Fresh Produce <br>
+                        <span class="pro">Tomato, Pepper...</span></p><br>
+                    </div></a>
+
+                    <a href="tubers.html"><div class="productss">
+                        <p>Tubers & Grains <br>
+                        <span class="pro">Yam, Rice...</span></p>
+                    </div></a>
+                    <a href="fruits.html"><div class="productsss">
+                        <p>Fruits <br>
+                        <span class="pro">Grapes, Apples...</span></p>
+                    </div></a>
+                </div>
+
+               <div class="category-1">
+                <a href="protein.html"><div class="productsssss">
+                        <p>Protein <br>
+                        <span class="pro">Fish, Meat, Shrimps...</span></p>
+                    </div></a>
+
+                    <a href="household.html"><div class="productssssa">
+                        <p>Household <br>
+                        <span class="pro">T Rolls, Detergents...</span></p>
+                    </div></a>
+
+                    <a href="bakery.html"><div class="productssssb">
+                        <p>Baking & Dairy <br>
+                        <span class="pro">Baking Flour, Milk...</span></p>
+                    </div></a>
+               </div>
+             </section>
+            <!--QUALITY BANNERS-->
+            <div class="container-1">
+            <a href="fastfood.html"> <div class="quality">
+                <h2><strong>Quality</strong> you can trust on <br> <strong>Delivery </strong> you can count on</h2>
+                <p>Shop fresh foods on your schedule</p>
+                <img src="bugger1r.png">
+            </div></a>
+             <a href="kitchen.html"><div class="quality-1">
+                <div class="circle">g</div>
+                <h2>Save Time with Our Extra Services<br> <span>Let us cut, blend, wash, pluck,<br> and grind your food items</span></h2>
+                <img src="blender1b.png">
+                <br><br>
+                
+            </div></a>
+        </div>
+        <!--NEW STOCK-->
+        <div class="stock-container">
+            <p>New Stock  <a href="seeAll.html"><span class="see">See all</span></a></p>
+            <div class="large-screen">
+                
+              
+            <div class="large-screen">
+                 <div class="stock-1">
+                    
+                    
+                <div class="stock-items">
+                    <img src="blender4.JPG">
+                    <div class="product-info">
+                    <span class="items">SwiftBlend</span><br><br>
+                    <div class="price">
+                       ₦2,000 - ₦9,500
+                    </div>
+                    <div class="option">
+                         <span class="items">Options:5 </span>
+                    <select>
+                        <option>Smaller size &nbsp; &#8358;35,450</option>
+                        <option>Small size &nbsp; &#8358;48,698</option>
+                        <option>Medium size &nbsp; &#8358;64,899</option>
+                        <option>Big size &nbsp; &#8358;79,346</option>
+                        <option>Bigger size &nbsp; &#8358;87,549</option>
+                    </select>
+                    </div>
+                    <button>&#128722; Add to Cart</button>
+                </div>
+                </div>
+                <div class="stock-items">
+                    <img src="gen.JPG">
+                    <span class="items">10,000W Generator</span><br><br>
+                    <div class="price">
+                       ₦2,000 - ₦9,500
+                    </div>
+                    <div class="option">
+                         <span class="items">Options:5 </span>
+                    <select>
+                        <option>Smaller size &nbsp; &#8358;35,000</option>
+                        <option>Small size &nbsp; &#8358;70,000</option>
+                        <option>Medium size &nbsp; &#8358;130,000</option>
+                        <option>Big size &nbsp; &#8358;197,000</option>
+                        <option>Bigger size &nbsp; &#8358;250,000</option>
+                    </select>
+                    </div>
+                     <button>&#128722; Add to Cart</button>
+                </div>
+            </div>
+
+                
+             <div class="stock-1">
+                <div class="stock-items">
+                    <img src="iron.JPG">
+                    <span class="items">Iron</span><br><br>
+                    <div class="price">
+                       ₦2,000 - ₦9,500
+                    </div>
+                    <div class="option">
+                         <span class="items">Options:1 </span>
+                    <select>
+                        <option> Normal size &nbsp; &#8358;27,967</option>
+                    </select>
+                    </div>
+                    <button>&#128722; Add to Cart</button>
+                </div>
+
+                 <div class="stock-items">
+                    <img src="save5.JPG">
+                    <span class="items">Kreft Paper Bags</span><br><br>
+                    <div class="price">
+                       ₦2,000 - ₦9,500
+                    </div>
+                    <div class="option">
+                         <span class="items">Options:3 </span>
+                    <select>
+                        <option>Small size &nbsp; &#8358;5,450</option>
+                        <option>Medium &nbsp; &#8358;12,698</option>
+                        <option>Big size &nbsp; &#8358;20,549</option>
+                    </select>
+                    </div>
+                     <button>&#128722; Add to Cart</button>
+                </div>
+            </div>
+         </div>
+            <!--QUALITY BANNER 2-->
+             <a href="electronic.html"><div class="quality-2">
+                <img src="blender1b.png">
+                <h2>Save Time with Our Extra Services<br> <span>Let us cut, blend, wash, pluck,<br> and grind your food items</span></h2>
+                <div class="circle">
+                    <img src="pepper1r.png">
+                </div>
+                <br><br>
+                
+            </div></a>
+            <div class="large-screen">
+                
+             <div class="stock-1">
+                <div class="stock-items">
+                    <img src="juice.JPG">
+                    <span class="items">Mug</span><br><br>
+                    <div class="price">
+                       ₦2,000 - ₦9,500
+                    </div>
+                    <div class="option">
+                         <span class="items">Options:4 </span>
+                    <select>
+                        <option>Smaller size &nbsp; &#8358;2,564</option>
+                        <option>Small size &nbsp; &#8358;3,200</option>
+                        <option>Medium size &nbsp; &#8358;5,478</option>
+                        <option>Big size &nbsp; &#8358;7,346</option>
+                    </select>
+                    </div>
+                    <button>&#128722; Add to Cart</button>
+                </div>
+
+                 <div class="stock-items">
+                    <img src="fan.JPG">
+                    <span class="items">BreezePro</span><br><br>
+                    <div class="price">
+                       ₦2,000 - ₦9,500
+                    </div>
+                    <div class="option">
+                         <span class="items">Options:4 </span>
+                    <select>
+                        <option>Small size &nbsp; &#8358;15,000</option>
+                        <option>Medium size &nbsp; &#8358;37,000</option>
+                        <option>Big size &nbsp; &#8358;81,000</option>
+                        <option>Bigger size &nbsp; &#8358;105,000</option>
+                    </select>
+                    </div>
+                     <button>&#128722; Add to Cart</button>
+                </div>
+            </div>
+
+             <div class="stock-1">
+                <div class="stock-items">
+                    <img src="nescafe.JPG">
+                    <span class="items">CafeKick</span><br><br>
+                    <div class="price">
+                       ₦2,000 - ₦9,500
+                    </div>
+                    <div class="option">
+                         <span class="items">Options:2 </span>
+                    <select>
+                        <option>Small size &nbsp; &#8358;1,800</option>
+                        <option>Big size &nbsp; &#8358;10,500</option>
+                    </select>
+                    </div>
+                    <button>&#128722; Add to Cart</button>
+                </div>
+
+                 <div class="stock-items">
+                    <img src="blender5.JPG">
+                    <span class="items">Whirl & Crush</span><br><br>
+                    <div class="price">
+                       ₦2,000 - ₦9,500
+                    </div>
+                    <div class="option">
+                         <span class="items">Options:4 </span>
+                    <select>
+                        <option>Smaller size &nbsp; &#8358;24,230</option>
+                        <option>Small size &nbsp; &#8358;48,600</option>
+                        <option>Medium size &nbsp; &#8358;64,893</option>
+                        <option>Big size &nbsp; &#8358;77,670</option>
+                    </select>
+                    </div>
+                     <button>&#128722; Add to Cart</button>
+                </div>
+            </div>
+            </div>
+            <!--QUALITY BANNER 3-->
+            <a href="#"><div class="quality-3">
+                <div class="circle">
+                    <h2>Save Time with Our Extra Services<br> <span>Let us cut, blend, wash, pluck,<br> and grind your food items</span></h2>
+                </div>
+                <img src="blender1b.png">
+                <br><br>
+                
+            </div></a>
+             <div class="large-screen">
+             <div class="stock-1">
+                <div class="stock-items">
+                    <img src="solar.JPG">
+                    <span class="items">MicroVolt</span><br><br>
+                    <div class="price">
+                       ₦2,000 - ₦9,500
+                    </div>
+                    <div class="option">
+                         <span class="items">Options:3 </span>
+                    <select>
+                        <option>Small size &nbsp; &#8358;74,000</option>
+                        <option>Medium size &nbsp; &#8358;122,000</option>
+                        <option>Big size &nbsp; &#8358;187,000</option>
+                    </select>
+                    </div>
+                    <button>&#128722; Add to Cart</button>
+                </div>
+
+                 <div class="stock-items">
+                    <img src="wine3.JPG">
+                    <span class="items">Cork Royale</span><br><br>
+                    <div class="price">
+                       ₦2,000 - ₦9,500
+                    </div>
+                    <div class="option">
+                         <span class="items">Options:1 </span>
+                    <select>
+                        <option>Medium size &nbsp; &#8358;19,670</option>
+                    </select>
+                    </div>
+                     <button>&#128722; Add to Cart</button>
+                </div>
+            </div>
+             <div class="stock-1">
+                <div class="stock-items">
+                    <img src="wine.JPG">
+                    <span class="items">Velvet Pour</span><br><br>
+                    <div class="price">
+                       ₦2,000 - ₦9,500
+                    </div>
+                    <div class="option">
+                         <span class="items">Options:4 </span>
+                    <select>
+                        <option>Smaller size &nbsp; &#8358;5,000</option>
+                        <option>Small size &nbsp; &#8358;12,500</option>
+                        <option>Medium size &nbsp; &#8358;25,000</option>
+                        <option>Big size &nbsp; &#8358;35,000</option>
+                    </select>
+                    </div>
+                    <button>&#128722; Add to Cart</button>
+                </div>
+
+                 <div class="stock-items">
+                    <img src="save4.JPG">
+                    <span class="items">Kong cup</span><br><br>
+                    <div class="price">
+                       ₦2,000 - ₦9,500
+                    </div>
+                    <div class="option">
+                         <span class="items">Options:2 </span>
+                    <select>
+                        <option>Small size &nbsp; &#8358;1,200</option>
+                        <option>Big size &nbsp; &#8358;3,000</option>
+                    </select>
+                    </div>
+                     <button>&#128722; Add to Cart</button>
+                </div>
+            </div>
+             </div>
+            <!--QUALITY BANNER 4-->
+             <a href="#"><div class="quality-4">
+                <div class="circle">
+                    <h2>Save Time with Our Extra Services<br> <span>Let us cut, blend, wash, pluck,<br> and grind your food items</span></h2>
+                </div>
+                <img src="blender1b.png">
+                <br><br>
+                
+            </div></a>
+
+             <div class="stock-1">
+                <div class="stock-items">
+                    <img src="juice3.JPG">
+                    <span class="items">FlexiDrink</span><br><br>
+                    <div class="price">
+                       ₦2,000 - ₦9,500
+                    </div>
+                    <div class="option">
+                         <span class="items">Options:3 </span>
+                    <select>
+                        <option>Small size &nbsp; &#8358;4,700</option>
+                        <option>Medium size &nbsp; &#8358;9,200</option>
+                        <option>Big size &nbsp; &#8358;15,500</option>
+                    </select>
+                    </div>
+                    <button>&#128722; Add to Cart</button>
+                </div>
+
+                 <div class="stock-items">
+                    <img src="frig.JPG">
+                    <span class="items">IceVault</span><br><br>
+                    <div class="price">
+                       ₦2,000 - ₦9,500
+                    </div>
+                    <div class="option">
+                         <span class="items">Options:3 </span>
+                    <select>
+                        <option>Small size &nbsp; &#8358;135,500</option>
+                        <option>Medium size &nbsp; &#8358;299,300</option>
+                        <option>Big size &nbsp; &#8358;487,000</option>
+                    </select>
+                    </div>
+                     <button>&#128722; Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <br><br><br>
+
+     <footer>
+
+        <h1>MARIOKART MINI MART</h1>
+
+        <p>
+            Built for convenience and speed, this shopping experience focuses on easy navigation,
+            fast product discovery, and smooth checkout flow.
+        </p>
+
+        <a href="#top" class="top-btn">BACK TO TOP</a>
+
+        <div class="footer-links">
+            <h3>Contact Us</h3>
+            <h3>Policies</h3>
+            <h3>Companies</h3>
+            <h3>About Us</h3>
+        </div>
+
+</footer>
+     </div>
+       
+        
+
+
+<script src="cart.js"></script>
+</body>
+</html>

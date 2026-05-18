@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Electronics Store</title>
+
+<style>
+
+body{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: black;
+}
+
+header{
+    background: orange;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header h1{
+    font-size: 30px;
+}
+
+.hero{
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url('electronics.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 45vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-text h2{
+    color: orange;
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.hero-text p{
+    color: white;
+    font-size: 18px;
+}
+
+.food-container{
+    margin-top: 50px;
+}
+
+.food-title{
+    color: orange;
+    margin-left: 20px;
+    font-size: 30px;
+}
+
+.stock-1{
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    padding-bottom: 80px;
+}
+
+.stock-items{
+    background: orange;
+    width: 250px;
+    height: 430px;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: 0.5s;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+
+.stock-items:hover{
+    transform: scale(1.05);
+    background: orangered;
+}
+
+.stock-items img{
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.items{
+    margin-left: 10px;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.price{
+    margin-left: 10px;
+    color: white;
+    font-size: 18px;
+}
+
+.option{
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.option span{
+    color: black;
+    font-weight: bold;
+}
+
+select{
+    margin-left: 10px;
+    border: none;
+    background: orange;
+    cursor: pointer;
+}
+
+.stock-items:hover select{
+    background: orangered;
+    transition: 0.8s;
+}
+
+button{
+    width: 180px;
+    height: 45px;
+    border: none;
+    border-radius: 40px;
+    margin-top: 35px;
+    margin-left: 35px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.5s;
+}
+
+button:hover{
+    background: black;
+    color: white;
+    transform: scale(1.1);
+}
+
+
+           footer{
+                background:orange;
+                padding:50px 20px;
+                text-align:center;
+                color:black;
+            }
+
+            footer h1{
+                margin-bottom:20px;
+            }
+
+            footer p{
+                max-width:700px;
+                margin:auto;
+                line-height:1.7;
+            }
+
+            .top-btn{
+                display:inline-block;
+                margin-top:20px;
+                background:black;
+                color:white;
+                padding:12px 25px;
+                border-radius:30px;
+                text-decoration:none;
+            }
+
+            .footer-links{
+                margin-top:40px;
+            }
+
+            .footer-links h3{
+                margin:15px 0;
+            }
+
+            .cart{
+    margin-left: 10px;
+    background: rgb(223, 145, 1);
+    color: white;
+    width: 70px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 2px grey;
+    cursor: pointer;
+    position: fixed;
+    right: 20px;
+    top: 70px;
+    z-index: 10;
+    font-weight: bold;
+}
+
+#cart-count{
+    background: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 7px;
+    font-size: 12px;
+    position: absolute;
+    top: -8px;
+    right: -5px;
+}
+
+.cart-box{
+    position: fixed;
+    top: 100px;
+    right: -400px;
+    width: 320px;
+    max-height: 500px;
+    overflow-y: auto;
+    background: white;
+    border-radius: 15px;
+    padding: 15px;
+    z-index: 9999;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+    transition: 0.5s;
+}
+
+.cart-box.active{
+    right: 20px;
+}
+
+.cart-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid orange;
+    padding-bottom: 10px;
+}
+
+.cart-header h2{
+    margin: 0;
+    color: orange;
+}
+
+.close-cart{
+    font-size: 30px;
+    cursor: pointer;
+    color: red;
+    font-weight: bold;
+}
+
+.cart-item{
+    margin-top: 15px;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.cart-item h4{
+    margin: 0;
+    color: black;
+}
+
+.cart-item p{
+    margin: 5px 0;
+    color: grey;
+}
+
+.remove-btn{
+    background: red;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.remove-btn:hover{
+    background: darkred;
+}
+
+.cart-footer{
+    text-align: center;
+    margin-top: 20px;
+}
+
+#clearCart{
+    margin: 0;
+    background: orange;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    width: 90%;
+    font-weight: bold;
+}
+
+#clearCart:hover{
+    background: orangered;
+}
+
+#proceedToPayment{
+    margin: 0;
+}
+
+
+
+@media(max-width:768px){
+
+.hero-text h2{
+    font-size: 32px;
+}
+
+.stock-items{
+    width: 85%;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>MARIOKART ELECTRONICS</h1>
+</header>
+
+<section class="hero">
+    <div class="hero-text">
+        <h2>Quality Electronic Devices</h2>
+        <p>Modern gadgets and home electronics at affordable prices</p>
+    </div>
+</section>
+
+<button class="cart">&#128722; <span id="cart-count">0</span></button>
+
+<div class="cart-box" id="cartBox">
+
+    <div class="cart-header">
+        <h2>My Cart</h2>
+
+        <!-- CLOSE ICON -->
+        <span class="close-cart" id="closeCart">
+            &times;
+        </span>
+    </div>
+
+    <!-- SELECTED ITEMS -->
+    <div id="cartItems"></div>
+</div>
+
+<div class="food-container">
+
+<h2 class="food-title">Available Electronics</h2>
+
+<div class="stock-1">
+
+<div class="stock-items">
+    <img src="tv.jpg">
+
+    <br><br>
+
+    <span class="items">Smart TV</span>
+
+    <br><br>
+
+    <div class="price">₦120,000 - ₦450,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>32 Inches - ₦120,000</option>
+            <option>43 Inches - ₦220,000</option>
+            <option>55 Inches - ₦450,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="laptop.jpg">
+
+    <br><br>
+
+    <span class="items">Laptop Computer</span>
+
+    <br><br>
+
+    <div class="price">₦250,000 - ₦900,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Core i3 - ₦250,000</option>
+            <option>Core i5 - ₦450,000</option>
+            <option>Core i7 - ₦900,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="phone.jpg">
+
+    <br><br>
+
+    <span class="items">Smart Phone</span>
+
+    <br><br>
+
+    <div class="price">₦90,000 - ₦650,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>64GB - ₦90,000</option>
+            <option>128GB - ₦220,000</option>
+            <option>256GB - ₦650,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="speaker.jpg">
+
+    <br><br>
+
+    <span class="items">Bluetooth Speaker</span>
+
+    <br><br>
+
+    <div class="price">₦15,000 - ₦85,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Mini Speaker - ₦15,000</option>
+            <option>Medium Speaker - ₦35,000</option>
+            <option>Party Speaker - ₦85,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="generator.jpg">
+
+    <br><br>
+
+    <span class="items">Generator</span>
+
+    <br><br>
+
+    <div class="price">₦180,000 - ₦750,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>1.5KVA - ₦180,000</option>
+            <option>3.5KVA - ₦350,000</option>
+            <option>7KVA - ₦750,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="fan.jpg">
+
+    <br><br>
+
+    <span class="items">Standing Fan</span>
+
+    <br><br>
+
+    <div class="price">₦20,000 - ₦75,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Small Fan - ₦20,000</option>
+            <option>Medium Fan - ₦40,000</option>
+            <option>Industrial Fan - ₦75,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="fridge.jpg">
+
+    <br><br>
+
+    <span class="items">Refrigerator</span>
+
+    <br><br>
+
+    <div class="price">₦180,000 - ₦900,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Small Size - ₦180,000</option>
+            <option>Double Door - ₦450,000</option>
+            <option>Large Family Size - ₦900,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="microwave.jpg">
+
+    <br><br>
+
+    <span class="items">Microwave Oven</span>
+
+    <br><br>
+
+    <div class="price">₦65,000 - ₦250,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>20 Litres - ₦65,000</option>
+            <option>30 Litres - ₦120,000</option>
+            <option>45 Litres - ₦250,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="headset.jpg">
+
+    <br><br>
+
+    <span class="items">Wireless Headset</span>
+
+    <br><br>
+
+    <div class="price">₦12,000 - ₦95,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Basic Headset - ₦12,000</option>
+            <option>Gaming Headset - ₦40,000</option>
+            <option>Premium Headset - ₦95,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="playstation.jpg">
+
+    <br><br>
+
+    <span class="items">PlayStation Console</span>
+
+    <br><br>
+
+    <div class="price">₦250,000 - ₦950,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>PS4 Slim - ₦250,000</option>
+            <option>PS5 Digital - ₦550,000</option>
+            <option>PS5 Pro - ₦950,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="iron.jpg">
+
+    <br><br>
+
+    <span class="items">Electric Iron</span>
+
+    <br><br>
+
+    <div class="price">₦12,000 - ₦55,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Dry Iron - ₦12,000</option>
+            <option>Steam Iron - ₦25,000</option>
+            <option>Premium Steam Iron - ₦55,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="toaster.jpg">
+
+    <br><br>
+
+    <span class="items">Bread Toaster</span>
+
+    <br><br>
+
+    <div class="price">₦15,000 - ₦70,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>2 Slice Toaster - ₦15,000</option>
+            <option>4 Slice Toaster - ₦35,000</option>
+            <option>Commercial Toaster - ₦70,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+</div>
+
+<div class="stock-1">
+
+<div class="stock-items">
+    <img src="washingmachine.jpg">
+
+    <br><br>
+
+    <span class="items">Washing Machine</span>
+
+    <br><br>
+
+    <div class="price">₦120,000 - ₦650,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Single Tub - ₦120,000</option>
+            <option>Double Tub - ₦280,000</option>
+            <option>Automatic - ₦650,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="airconditioner.jpg">
+
+    <br><br>
+
+    <span class="items">Air Conditioner</span>
+
+    <br><br>
+
+    <div class="price">₦180,000 - ₦850,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>1HP - ₦180,000</option>
+            <option>1.5HP - ₦350,000</option>
+            <option>2HP Inverter - ₦850,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="camera.jpg">
+
+    <br><br>
+
+    <span class="items">Digital Camera</span>
+
+    <br><br>
+
+    <div class="price">₦150,000 - ₦1,200,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Compact Camera - ₦150,000</option>
+            <option>Mirrorless - ₦450,000</option>
+            <option>Professional DSLR - ₦1,200,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="printer.jpg">
+
+    <br><br>
+
+    <span class="items">Printer Machine</span>
+
+    <br><br>
+
+    <div class="price">₦55,000 - ₦350,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Inkjet - ₦55,000</option>
+            <option>Laser Printer - ₦180,000</option>
+            <option>Industrial Printer - ₦350,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="router.jpg">
+
+    <br><br>
+
+    <span class="items">WiFi Router</span>
+
+    <br><br>
+
+    <div class="price">₦18,000 - ₦120,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>4G Router - ₦18,000</option>
+            <option>5G Router - ₦45,000</option>
+            <option>Enterprise Router - ₦120,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="keyboard.jpg">
+
+    <br><br>
+
+    <span class="items">Wireless Keyboard</span>
+
+    <br><br>
+
+    <div class="price">₦10,000 - ₦65,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Mini Keyboard - ₦10,000</option>
+            <option>Mechanical Keyboard - ₦30,000</option>
+            <option>RGB Gaming Keyboard - ₦65,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="mouse.jpg">
+
+    <br><br>
+
+    <span class="items">Computer Mouse</span>
+
+    <br><br>
+
+    <div class="price">₦5,000 - ₦40,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Wired Mouse - ₦5,000</option>
+            <option>Wireless Mouse - ₦15,000</option>
+            <option>Gaming Mouse - ₦40,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="smartwatch.jpg">
+
+    <br><br>
+
+    <span class="items">Smart Watch</span>
+
+    <br><br>
+
+    <div class="price">₦20,000 - ₦180,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Basic Smart Watch - ₦20,000</option>
+            <option>Fitness Watch - ₦60,000</option>
+            <option>Premium Smart Watch - ₦180,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="powerbank.jpg">
+
+    <br><br>
+
+    <span class="items">Power Bank</span>
+
+    <br><br>
+
+    <div class="price">₦12,000 - ₦85,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>10,000mAh - ₦12,000</option>
+            <option>20,000mAh - ₦28,000</option>
+            <option>50,000mAh - ₦85,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="ringlight.jpg">
+
+    <br><br>
+
+    <span class="items">Ring Light</span>
+
+    <br><br>
+
+    <div class="price">₦15,000 - ₦95,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Small Ring Light - ₦15,000</option>
+            <option>Medium Ring Light - ₦40,000</option>
+            <option>Studio Ring Light - ₦95,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="blender.jpg">
+
+    <br><br>
+
+    <span class="items">Electric Blender</span>
+
+    <br><br>
+
+    <div class="price">₦25,000 - ₦180,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Basic Blender - ₦25,000</option>
+            <option>Commercial Blender - ₦75,000</option>
+            <option>Heavy Duty Blender - ₦180,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="stabilizer.jpg">
+
+    <br><br>
+
+    <span class="items">Voltage Stabilizer</span>
+
+    <br><br>
+
+    <div class="price">₦18,000 - ₦150,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>500VA - ₦18,000</option>
+            <option>2KVA - ₦60,000</option>
+            <option>5KVA - ₦150,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+</div>
+
+<div class="stock-1">
+
+<div class="stock-items">
+    <img src="projector.jpg">
+
+    <br><br>
+
+    <span class="items">HD Projector</span>
+
+    <br><br>
+
+    <div class="price">₦85,000 - ₦650,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Mini Projector - ₦85,000</option>
+            <option>HD Projector - ₦220,000</option>
+            <option>4K Projector - ₦650,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="drone.jpg">
+
+    <br><br>
+
+    <span class="items">Camera Drone</span>
+
+    <br><br>
+
+    <div class="price">₦150,000 - ₦1,500,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Mini Drone - ₦150,000</option>
+            <option>4K Drone - ₦500,000</option>
+            <option>Professional Drone - ₦1,500,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="tablet.jpg">
+
+    <br><br>
+
+    <span class="items">Android Tablet</span>
+
+    <br><br>
+
+    <div class="price">₦85,000 - ₦550,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>64GB Tablet - ₦85,000</option>
+            <option>128GB Tablet - ₦180,000</option>
+            <option>256GB Tablet - ₦550,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="ups.jpg">
+
+    <br><br>
+
+    <span class="items">UPS Backup</span>
+
+    <br><br>
+
+    <div class="price">₦30,000 - ₦250,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>650VA - ₦30,000</option>
+            <option>1.5KVA - ₦95,000</option>
+            <option>5KVA - ₦250,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="smartdoorbell.jpg">
+
+    <br><br>
+
+    <span class="items">Smart Door Bell</span>
+
+    <br><br>
+
+    <div class="price">₦25,000 - ₦180,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Basic Door Bell - ₦25,000</option>
+            <option>Video Door Bell - ₦80,000</option>
+            <option>Premium Smart Bell - ₦180,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="solarpanel.jpg">
+
+    <br><br>
+
+    <span class="items">Solar Panel</span>
+
+    <br><br>
+
+    <div class="price">₦55,000 - ₦850,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>100W - ₦55,000</option>
+            <option>300W - ₦180,000</option>
+            <option>Full Solar Kit - ₦850,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="inverter.jpg">
+
+    <br><br>
+
+    <span class="items">Power Inverter</span>
+
+    <br><br>
+
+    <div class="price">₦120,000 - ₦1,200,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>1KVA - ₦120,000</option>
+            <option>3.5KVA - ₦350,000</option>
+            <option>10KVA - ₦1,200,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="waterdispenser.jpg">
+
+    <br><br>
+
+    <span class="items">Water Dispenser</span>
+
+    <br><br>
+
+    <div class="price">₦45,000 - ₦250,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Basic Dispenser - ₦45,000</option>
+            <option>Hot & Cold - ₦95,000</option>
+            <option>Premium Dispenser - ₦250,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="vacuumcleaner.jpg">
+
+    <br><br>
+
+    <span class="items">Vacuum Cleaner</span>
+
+    <br><br>
+
+    <div class="price">₦35,000 - ₦320,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Portable Vacuum - ₦35,000</option>
+            <option>Home Vacuum - ₦95,000</option>
+            <option>Industrial Vacuum - ₦320,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="electrickettle.jpg">
+
+    <br><br>
+
+    <span class="items">Electric Kettle</span>
+
+    <br><br>
+
+    <div class="price">₦12,000 - ₦65,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>1 Litre - ₦12,000</option>
+            <option>2 Litres - ₦28,000</option>
+            <option>Smart Kettle - ₦65,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="cctv.jpg">
+
+    <br><br>
+
+    <span class="items">CCTV Camera</span>
+
+    <br><br>
+
+    <div class="price">₦25,000 - ₦450,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Single Camera - ₦25,000</option>
+            <option>4 Camera Kit - ₦120,000</option>
+            <option>16 Camera Kit - ₦450,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="gamingchair.jpg">
+
+    <br><br>
+
+    <span class="items">Gaming Chair</span>
+
+    <br><br>
+
+    <div class="price">₦65,000 - ₦380,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Basic Chair - ₦65,000</option>
+            <option>RGB Chair - ₦150,000</option>
+            <option>Premium Gaming Chair - ₦380,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="projector.jpg">
+
+    <br><br>
+
+    <span class="items">HD Projector</span>
+
+    <br><br>
+
+    <div class="price">₦85,000 - ₦650,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Mini Projector - ₦85,000</option>
+            <option>HD Projector - ₦220,000</option>
+            <option>4K Projector - ₦650,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="drone.jpg">
+
+    <br><br>
+
+    <span class="items">Camera Drone</span>
+
+    <br><br>
+
+    <div class="price">₦150,000 - ₦1,500,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Mini Drone - ₦150,000</option>
+            <option>4K Drone - ₦500,000</option>
+            <option>Professional Drone - ₦1,500,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="tablet.jpg">
+
+    <br><br>
+
+    <span class="items">Android Tablet</span>
+
+    <br><br>
+
+    <div class="price">₦85,000 - ₦550,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>64GB Tablet - ₦85,000</option>
+            <option>128GB Tablet - ₦180,000</option>
+            <option>256GB Tablet - ₦550,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="ups.jpg">
+
+    <br><br>
+
+    <span class="items">UPS Backup</span>
+
+    <br><br>
+
+    <div class="price">₦30,000 - ₦250,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>650VA - ₦30,000</option>
+            <option>1.5KVA - ₦95,000</option>
+            <option>5KVA - ₦250,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="smartdoorbell.jpg">
+
+    <br><br>
+
+    <span class="items">Smart Door Bell</span>
+
+    <br><br>
+
+    <div class="price">₦25,000 - ₦180,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Basic Door Bell - ₦25,000</option>
+            <option>Video Door Bell - ₦80,000</option>
+            <option>Premium Smart Bell - ₦180,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="solarpanel.jpg">
+
+    <br><br>
+
+    <span class="items">Solar Panel</span>
+
+    <br><br>
+
+    <div class="price">₦55,000 - ₦850,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>100W - ₦55,000</option>
+            <option>300W - ₦180,000</option>
+            <option>Full Solar Kit - ₦850,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="inverter.jpg">
+
+    <br><br>
+
+    <span class="items">Power Inverter</span>
+
+    <br><br>
+
+    <div class="price">₦120,000 - ₦1,200,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>1KVA - ₦120,000</option>
+            <option>3.5KVA - ₦350,000</option>
+            <option>10KVA - ₦1,200,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="waterdispenser.jpg">
+
+    <br><br>
+
+    <span class="items">Water Dispenser</span>
+
+    <br><br>
+
+    <div class="price">₦45,000 - ₦250,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Basic Dispenser - ₦45,000</option>
+            <option>Hot & Cold - ₦95,000</option>
+            <option>Premium Dispenser - ₦250,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="vacuumcleaner.jpg">
+
+    <br><br>
+
+    <span class="items">Vacuum Cleaner</span>
+
+    <br><br>
+
+    <div class="price">₦35,000 - ₦320,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Portable Vacuum - ₦35,000</option>
+            <option>Home Vacuum - ₦95,000</option>
+            <option>Industrial Vacuum - ₦320,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="electrickettle.jpg">
+
+    <br><br>
+
+    <span class="items">Electric Kettle</span>
+
+    <br><br>
+
+    <div class="price">₦12,000 - ₦65,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>1 Litre - ₦12,000</option>
+            <option>2 Litres - ₦28,000</option>
+            <option>Smart Kettle - ₦65,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="cctv.jpg">
+
+    <br><br>
+
+    <span class="items">CCTV Camera</span>
+
+    <br><br>
+
+    <div class="price">₦25,000 - ₦450,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Single Camera - ₦25,000</option>
+            <option>4 Camera Kit - ₦120,000</option>
+            <option>16 Camera Kit - ₦450,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="gamingchair.jpg">
+
+    <br><br>
+
+    <span class="items">Gaming Chair</span>
+
+    <br><br>
+
+    <div class="price">₦65,000 - ₦380,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Basic Chair - ₦65,000</option>
+            <option>RGB Chair - ₦150,000</option>
+            <option>Premium Gaming Chair - ₦380,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+</div>
+
+</div>
+<br><br><br><br><br><br>
+
+     <footer>
+
+    <h1>MARIOKART MINI MART</h1>
+
+    <p>
+        Built for convenience and speed, this shopping experience focuses on easy navigation,
+        fast product discovery, and smooth checkout flow.
+    </p>
+
+    <a href="#top" class="top-btn">BACK TO TOP</a>
+
+    <div class="footer-links">
+        <h3>Contact Us</h3>
+        <h3>Policies</h3>
+        <h3>Companies</h3>
+        <h3>About Us</h3>
+    </div>
+
+</footer>
+
+<script src="cart.js"></script>
+
+</body>
+</html>

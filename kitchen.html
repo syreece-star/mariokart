@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitchen Accessories</title>
+
+<style>
+
+body{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: black;
+} 
+
+header{
+    background: orange;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header h1{
+    font-size: 30px;
+} 
+
+.hero{
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url('kitchen.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 45vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-text h2{
+    color: orange;
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.hero-text p{
+    color: white;
+    font-size: 18px;
+}
+
+.food-container{
+    margin-top: 50px;
+}
+
+.food-title{
+    color: orange;
+    margin-left: 20px;
+    font-size: 30px;
+}
+
+.stock-1{
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    padding-bottom: 80px;
+}
+
+.stock-items{
+    background: orange;
+    width: 250px;
+    height: 430px;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: 0.5s;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+
+.stock-items:hover{
+    transform: scale(1.05);
+    background: orangered;
+}
+
+.stock-items img{
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.items{
+    margin-left: 10px;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.price{
+    margin-left: 10px;
+    color: white;
+    font-size: 18px;
+}
+
+.option{
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.option span{
+    color: black;
+    font-weight: bold;
+}
+
+select{
+    margin-left: 10px;
+    border: none;
+    background: orange;
+    cursor: pointer;
+}
+
+.stock-items:hover select{
+    background: orangered;
+}
+
+button{
+    width: 180px;
+    height: 45px;
+    border: none;
+    border-radius: 40px;
+    margin-top: 35px;
+    margin-left: 35px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.5s;
+}
+
+button:hover{
+    background: black;
+    color: white;
+    transform: scale(1.1);
+}
+
+
+
+           footer{
+                background:orange;
+                padding:50px 20px;
+                text-align:center;
+                color:black;
+            }
+
+            footer h1{
+                margin-bottom:20px;
+            }
+
+            footer p{
+                max-width:700px;
+                margin:auto;
+                line-height:1.7;
+            }
+
+            .top-btn{
+                display:inline-block;
+                margin-top:20px;
+                background:black;
+                color:white;
+                padding:12px 25px;
+                border-radius:30px;
+                text-decoration:none;
+            }
+
+            .footer-links{
+                margin-top:40px;
+            }
+
+            .footer-links h3{
+                margin:15px 0;
+            }
+
+
+.cart{
+    margin-left: 10px;
+    background: rgb(223, 145, 1);
+    color: white;
+    width: 70px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 2px grey;
+    cursor: pointer;
+    position: fixed;
+    right: 20px;
+    top: 70px;
+    z-index: 10;
+    font-weight: bold;
+}
+
+#cart-count{
+    background: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 7px;
+    font-size: 12px;
+    position: absolute;
+    top: -8px;
+    right: -5px;
+}
+
+.cart-box{
+    position: fixed;
+    top: 100px;
+    right: -400px;
+    width: 320px;
+    max-height: 500px;
+    overflow-y: auto;
+    background: white;
+    border-radius: 15px;
+    padding: 15px;
+    z-index: 9999;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+    transition: 0.5s;
+}
+
+.cart-box.active{
+    right: 20px;
+}
+
+.cart-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid orange;
+    padding-bottom: 10px;
+}
+
+.cart-header h2{
+    margin: 0;
+    color: orange;
+}
+
+.close-cart{
+    font-size: 30px;
+    cursor: pointer;
+    color: red;
+    font-weight: bold;
+}
+
+.cart-item{
+    margin-top: 15px;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.cart-item h4{
+    margin: 0;
+    color: black;
+}
+
+.cart-item p{
+    margin: 5px 0;
+    color: grey;
+}
+
+.remove-btn{
+    background: red;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.remove-btn:hover{
+    background: darkred;
+}
+
+.cart-footer{
+    text-align: center;
+    margin-top: 20px;
+}
+
+#clearCart{
+    margin: 0;
+    background: orange;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    width: 90%;
+    font-weight: bold;
+}
+
+#clearCart:hover{
+    background: orangered;
+}
+
+#proceedToPayment{
+    margin: 0;
+}
+
+
+@media(max-width:768px){
+
+.hero-text h2{
+    font-size: 32px;
+}
+
+.stock-items{
+    width: 85%;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>MARIOKART KITCHEN ACCESSORIES</h1>
+</header>
+
+<section class="hero">
+    <div class="hero-text">
+        <h2>Modern Kitchen Accessories</h2>
+        <p>Everything you need for a smart and stylish kitchen</p>
+    </div>
+</section>
+
+<button class="cart">&#128722; <span id="cart-count">0</span></button>
+
+<div class="cart-box" id="cartBox">
+
+    <div class="cart-header">
+        <h2>My Cart</h2>
+
+        <!-- CLOSE ICON -->
+        <span class="close-cart" id="closeCart">
+            &times;
+        </span>
+    </div>
+
+    <!-- SELECTED ITEMS -->
+    <div id="cartItems"></div>
+</div>
+
+<!-- PRODUCTS -->
+
+<div class="food-container">
+
+<h2 class="food-title">Available Kitchen Accessories</h2>
+
+<div class="stock-1"> 
+
+<div class="stock-items">
+    <img src="cookware.jpg">
+
+    <br><br>
+
+    <span class="items">Cookware Set</span>
+
+    <br><br>
+
+    <div class="price">₦25,000 - ₦180,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>5 Pieces - ₦25,000</option>
+            <option>10 Pieces - ₦70,000</option>
+            <option>20 Pieces - ₦180,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div> 
+
+<div class="stock-items">
+    <img src="knife.jpg">
+
+    <br><br>
+
+    <span class="items">Kitchen Knife Set</span>
+
+    <br><br>
+
+    <div class="price">₦8,000 - ₦65,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>3 Pieces - ₦8,000</option>
+            <option>6 Pieces - ₦20,000</option>
+            <option>Professional Set - ₦65,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div> 
+
+<div class="stock-items">
+    <img src="plate.jpg">
+
+    <br><br>
+
+    <span class="items">Dinner Plate Set</span>
+
+    <br><br>
+
+    <div class="price">₦12,000 - ₦85,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>4 Plates - ₦12,000</option>
+            <option>12 Plates - ₦35,000</option>
+            <option>Luxury Set - ₦85,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div> 
+
+<div class="stock-items">
+    <img src="spoonset.jpg">
+
+    <br><br>
+
+    <span class="items">Spoon & Fork Set</span>
+
+    <br><br>
+
+    <div class="price">₦6,000 - ₦45,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>12 Pieces - ₦6,000</option>
+            <option>24 Pieces - ₦18,000</option>
+            <option>Luxury Set - ₦45,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div> 
+
+<div class="stock-items">
+    <img src="gascooker.jpg">
+
+    <br><br>
+
+    <span class="items">Gas Cooker</span>
+
+    <br><br>
+
+    <div class="price">₦35,000 - ₦320,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>2 Burner - ₦35,000</option>
+            <option>4 Burner - ₦95,000</option>
+            <option>Industrial Cooker - ₦320,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div> 
+
+<div class="stock-items">
+    <img src="fryingpan.jpg">
+
+    <br><br>
+
+    <span class="items">Frying Pan</span>
+
+    <br><br>
+
+    <div class="price">₦7,000 - ₦55,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Small Pan - ₦7,000</option>
+            <option>Medium Pan - ₦18,000</option>
+            <option>Non-Stick Set - ₦55,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div> 
+
+<div class="stock-items">
+    <img src="storage.jpg">
+
+    <br><br>
+
+    <span class="items">Food Storage Set</span>
+
+    <br><br>
+
+    <div class="price">₦5,000 - ₦35,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Small Set - ₦5,000</option>
+            <option>Medium Set - ₦15,000</option>
+            <option>Large Set - ₦35,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div> 
+
+<div class="stock-items">
+    <img src="blender.jpg">
+
+    <br><br>
+
+    <span class="items">Kitchen Blender</span>
+
+    <br><br>
+
+    <div class="price">₦18,000 - ₦150,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Basic Blender - ₦18,000</option>
+            <option>Commercial Blender - ₦60,000</option>
+            <option>Heavy Duty Blender - ₦150,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div> 
+
+<div class="stock-items">
+    <img src="kettle.jpg">
+
+    <br><br>
+
+    <span class="items">Electric Kettle</span>
+
+    <br><br>
+
+    <div class="price">₦10,000 - ₦60,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>1 Litre - ₦10,000</option>
+            <option>2 Litres - ₦25,000</option>
+            <option>Smart Kettle - ₦60,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div> 
+
+<div class="stock-items">
+    <img src="microwave.jpg">
+
+    <br><br>
+
+    <span class="items">Microwave Oven</span>
+
+    <br><br>
+
+    <div class="price">₦65,000 - ₦280,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>20 Litres - ₦65,000</option>
+            <option>30 Litres - ₦120,000</option>
+            <option>Large Oven - ₦280,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="ricecooker.jpg">
+
+    <br><br>
+
+    <span class="items">Rice Cooker</span>
+
+    <br><br>
+
+    <div class="price">₦20,000 - ₦95,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Small Cooker - ₦20,000</option>
+            <option>Medium Cooker - ₦45,000</option>
+            <option>Family Size - ₦95,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="juicer.jpg">
+
+    <br><br>
+
+    <span class="items">Fruit Juicer</span>
+
+    <br><br>
+
+    <div class="price">₦15,000 - ₦120,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Portable Juicer - ₦15,000</option>
+            <option>Electric Juicer - ₦45,000</option>
+            <option>Commercial Juicer - ₦120,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="toaster.jpg">
+
+    <br><br>
+
+    <span class="items">Bread Toaster</span>
+
+    <br><br>
+
+    <div class="price">₦12,000 - ₦75,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>2 Slice Toaster - ₦12,000</option>
+            <option>4 Slice Toaster - ₦30,000</option>
+            <option>Commercial Toaster - ₦75,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="airfryer.jpg">
+
+    <br><br>
+
+    <span class="items">Air Fryer</span>
+
+    <br><br>
+
+    <div class="price">₦35,000 - ₦220,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>3 Litres - ₦35,000</option>
+            <option>6 Litres - ₦80,000</option>
+            <option>Digital Air Fryer - ₦220,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="pressurecooker.jpg">
+
+    <br><br>
+
+    <span class="items">Pressure Cooker</span>
+
+    <br><br>
+
+    <div class="price">₦25,000 - ₦150,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>5 Litres - ₦25,000</option>
+            <option>10 Litres - ₦65,000</option>
+            <option>Electric Pressure Cooker - ₦150,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="mixingbowl.jpg">
+
+    <br><br>
+
+    <span class="items">Mixing Bowl Set</span>
+
+    <br><br>
+
+    <div class="price">₦5,000 - ₦30,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>3 Bowls - ₦5,000</option>
+            <option>6 Bowls - ₦12,000</option>
+            <option>Premium Set - ₦30,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="choppingboard.jpg">
+
+    <br><br>
+
+    <span class="items">Chopping Board</span>
+
+    <br><br>
+
+    <div class="price">₦3,500 - ₦18,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Plastic Board - ₦3,500</option>
+            <option>Wooden Board - ₦8,000</option>
+            <option>Premium Set - ₦18,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="spicerack.jpg">
+
+    <br><br>
+
+    <span class="items">Spice Rack</span>
+
+    <br><br>
+
+    <div class="price">₦8,000 - ₦45,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>6 Jars - ₦8,000</option>
+            <option>12 Jars - ₦18,000</option>
+            <option>Luxury Rack - ₦45,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="cupset.jpg">
+
+    <br><br>
+
+    <span class="items">Cup Set</span>
+
+    <br><br>
+
+    <div class="price">₦4,000 - ₦28,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>4 Cups - ₦4,000</option>
+            <option>8 Cups - ₦10,000</option>
+            <option>Luxury Set - ₦28,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="waterflask.jpg">
+
+    <br><br>
+
+    <span class="items">Water Flask</span>
+
+    <br><br>
+
+    <div class="price">₦6,000 - ₦40,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>1 Litre - ₦6,000</option>
+            <option>2 Litres - ₦15,000</option>
+            <option>Premium Flask - ₦40,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="dishrack.jpg">
+
+    <br><br>
+
+    <span class="items">Dish Rack</span>
+
+    <br><br>
+
+    <div class="price">₦7,000 - ₦55,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Small Rack - ₦7,000</option>
+            <option>Medium Rack - ₦18,000</option>
+            <option>Stainless Rack - ₦55,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="measuringcup.jpg">
+
+    <br><br>
+
+    <span class="items">Measuring Cup Set</span>
+
+    <br><br>
+
+    <div class="price">₦3,000 - ₦16,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Plastic Set - ₦3,000</option>
+            <option>Steel Set - ₦8,000</option>
+            <option>Premium Set - ₦16,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="napkinholder.jpg">
+
+    <br><br>
+
+    <span class="items">Napkin Holder</span>
+
+    <br><br>
+
+    <div class="price">₦2,500 - ₦15,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Plastic Holder - ₦2,500</option>
+            <option>Metal Holder - ₦6,000</option>
+            <option>Luxury Holder - ₦15,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="kitchenorganizer.jpg">
+
+    <br><br>
+
+    <span class="items">Kitchen Organizer</span>
+
+    <br><br>
+
+    <div class="price">₦10,000 - ₦85,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Basic Organizer - ₦10,000</option>
+            <option>Medium Organizer - ₦30,000</option>
+            <option>Luxury Organizer - ₦85,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="toaster.jpg">
+
+    <br><br>
+
+    <span class="items">Bread Toaster</span>
+
+    <br><br>
+
+    <div class="price">₦12,000 - ₦75,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>2 Slice Toaster - ₦12,000</option>
+            <option>4 Slice Toaster - ₦30,000</option>
+            <option>Commercial Toaster - ₦75,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="airfryer.jpg">
+
+    <br><br>
+
+    <span class="items">Air Fryer</span>
+
+    <br><br>
+
+    <div class="price">₦35,000 - ₦220,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>3 Litres - ₦35,000</option>
+            <option>6 Litres - ₦80,000</option>
+            <option>Digital Air Fryer - ₦220,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="pressurecooker.jpg">
+
+    <br><br>
+
+    <span class="items">Pressure Cooker</span>
+
+    <br><br>
+
+    <div class="price">₦25,000 - ₦150,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>5 Litres - ₦25,000</option>
+            <option>10 Litres - ₦65,000</option>
+            <option>Electric Pressure Cooker - ₦150,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="mixingbowl.jpg">
+
+    <br><br>
+
+    <span class="items">Mixing Bowl Set</span>
+
+    <br><br>
+
+    <div class="price">₦5,000 - ₦30,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>3 Bowls - ₦5,000</option>
+            <option>6 Bowls - ₦12,000</option>
+            <option>Premium Set - ₦30,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="choppingboard.jpg">
+
+    <br><br>
+
+    <span class="items">Chopping Board</span>
+
+    <br><br>
+
+    <div class="price">₦3,500 - ₦18,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Plastic Board - ₦3,500</option>
+            <option>Wooden Board - ₦8,000</option>
+            <option>Premium Set - ₦18,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="spicerack.jpg">
+
+    <br><br>
+
+    <span class="items">Spice Rack</span>
+
+    <br><br>
+
+    <div class="price">₦8,000 - ₦45,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>6 Jars - ₦8,000</option>
+            <option>12 Jars - ₦18,000</option>
+            <option>Luxury Rack - ₦45,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="cupset.jpg">
+
+    <br><br>
+
+    <span class="items">Cup Set</span>
+
+    <br><br>
+
+    <div class="price">₦4,000 - ₦28,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>4 Cups - ₦4,000</option>
+            <option>8 Cups - ₦10,000</option>
+            <option>Luxury Set - ₦28,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="waterflask.jpg">
+
+    <br><br>
+
+    <span class="items">Water Flask</span>
+
+    <br><br>
+
+    <div class="price">₦6,000 - ₦40,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>1 Litre - ₦6,000</option>
+            <option>2 Litres - ₦15,000</option>
+            <option>Premium Flask - ₦40,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="dishrack.jpg">
+
+    <br><br>
+
+    <span class="items">Dish Rack</span>
+
+    <br><br>
+
+    <div class="price">₦7,000 - ₦55,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Small Rack - ₦7,000</option>
+            <option>Medium Rack - ₦18,000</option>
+            <option>Stainless Rack - ₦55,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="measuringcup.jpg">
+
+    <br><br>
+
+    <span class="items">Measuring Cup Set</span>
+
+    <br><br>
+
+    <div class="price">₦3,000 - ₦16,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Plastic Set - ₦3,000</option>
+            <option>Steel Set - ₦8,000</option>
+            <option>Premium Set - ₦16,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="napkinholder.jpg">
+
+    <br><br>
+
+    <span class="items">Napkin Holder</span>
+
+    <br><br>
+
+    <div class="price">₦2,500 - ₦15,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Plastic Holder - ₦2,500</option>
+            <option>Metal Holder - ₦6,000</option>
+            <option>Luxury Holder - ₦15,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="kitchenorganizer.jpg">
+
+    <br><br>
+
+    <span class="items">Kitchen Organizer</span>
+
+    <br><br>
+
+    <div class="price">₦10,000 - ₦85,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Basic Organizer - ₦10,000</option>
+            <option>Medium Organizer - ₦30,000</option>
+            <option>Luxury Organizer - ₦85,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="eggtray.jpg">
+
+    <br><br>
+
+    <span class="items">Egg Storage Tray</span>
+
+    <br><br>
+
+    <div class="price">₦3,000 - ₦20,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>12 Slots - ₦3,000</option>
+            <option>24 Slots - ₦8,000</option>
+            <option>Premium Tray - ₦20,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="oilbottle.jpg">
+
+    <br><br>
+
+    <span class="items">Oil Dispenser Bottle</span>
+
+    <br><br>
+
+    <div class="price">₦4,500 - ₦22,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>500ml - ₦4,500</option>
+            <option>1 Litre - ₦10,000</option>
+            <option>Luxury Glass Set - ₦22,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="foodwarmer.jpg">
+
+    <br><br>
+
+    <span class="items">Food Warmer</span>
+
+    <br><br>
+
+    <div class="price">₦15,000 - ₦120,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Portable Warmer - ₦15,000</option>
+            <option>Electric Warmer - ₦45,000</option>
+            <option>Commercial Warmer - ₦120,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="handmixer.jpg">
+
+    <br><br>
+
+    <span class="items">Hand Mixer</span>
+
+    <br><br>
+
+    <div class="price">₦12,000 - ₦85,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Basic Mixer - ₦12,000</option>
+            <option>Turbo Mixer - ₦35,000</option>
+            <option>Professional Mixer - ₦85,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="kitchenscale.jpg">
+
+    <br><br>
+
+    <span class="items">Kitchen Scale</span>
+
+    <br><br>
+
+    <div class="price">₦6,000 - ₦40,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Digital Scale - ₦6,000</option>
+            <option>Rechargeable Scale - ₦15,000</option>
+            <option>Premium Scale - ₦40,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="soapdispenser.jpg">
+
+    <br><br>
+
+    <span class="items">Soap Dispenser</span>
+
+    <br><br>
+
+    <div class="price">₦4,000 - ₦28,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Plastic Dispenser - ₦4,000</option>
+            <option>Automatic Dispenser - ₦12,000</option>
+            <option>Luxury Dispenser - ₦28,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="trayset.jpg">
+
+    <br><br>
+
+    <span class="items">Serving Tray Set</span>
+
+    <br><br>
+
+    <div class="price">₦8,000 - ₦55,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>2 Trays - ₦8,000</option>
+            <option>5 Trays - ₦20,000</option>
+            <option>Luxury Set - ₦55,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="bakingtray.jpg">
+
+    <br><br>
+
+    <span class="items">Baking Tray</span>
+
+    <br><br>
+
+    <div class="price">₦7,000 - ₦38,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Single Tray - ₦7,000</option>
+            <option>3 Pieces - ₦18,000</option>
+            <option>Premium Set - ₦38,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="ovenmitt.jpg">
+
+    <br><br>
+
+    <span class="items">Oven Mitt Gloves</span>
+
+    <br><br>
+
+    <div class="price">₦3,500 - ₦18,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>1 Pair - ₦3,500</option>
+            <option>2 Pairs - ₦8,000</option>
+            <option>Premium Set - ₦18,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="cookingspoon.jpg">
+
+    <br><br>
+
+    <span class="items">Cooking Spoon Set</span>
+
+    <br><br>
+
+    <div class="price">₦4,000 - ₦25,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Wooden Set - ₦4,000</option>
+            <option>Silicone Set - ₦10,000</option>
+            <option>Premium Set - ₦25,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="foodflask.jpg">
+
+    <br><br>
+
+    <span class="items">Food Flask</span>
+
+    <br><br>
+
+    <div class="price">₦6,000 - ₦35,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Small Flask - ₦6,000</option>
+            <option>Medium Flask - ₦15,000</option>
+            <option>Premium Flask - ₦35,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+<div class="stock-items">
+    <img src="potrack.jpg">
+
+    <br><br>
+
+    <span class="items">Pot Rack Organizer</span>
+
+    <br><br>
+
+    <div class="price">₦10,000 - ₦75,000</div>
+
+    <div class="option">
+        <span>Options:</span>
+
+        <select>
+            <option>Wall Rack - ₦10,000</option>
+            <option>Standing Rack - ₦25,000</option>
+            <option>Premium Rack - ₦75,000</option>
+        </select>
+    </div>
+
+    <button>🛒 Add to Cart</button>
+</div>
+
+</div>
+
+</div>
+<br><br><br><br>
+
+                <footer>
+
+    <h1>MARIOKART MINI MART</h1>
+
+    <p>
+        Built for convenience and speed, this shopping experience focuses on easy navigation,
+        fast product discovery, and smooth checkout flow.
+    </p>
+
+    <a href="#top" class="top-btn">BACK TO TOP</a>
+
+    <div class="footer-links">
+        <h3>Contact Us</h3>
+        <h3>Policies</h3>
+        <h3>Companies</h3>
+        <h3>About Us</h3>
+    </div>
+
+</footer>
+
+<script src="cart.js"></script>
+</body>
+</html>

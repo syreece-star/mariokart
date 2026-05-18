@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+           background:conic-gradient(black, orange);
+           color: orange;
+           
+        }
+        h1{
+            margin-top: 10vh;
+            margin-left: 11vw;
+            margin-bottom: 40px;
+            color: black;
+            font-size: 30px;
+            .kart{
+                font-size: 60px;
+                font-family: Georgia, 'Times New Roman', Times, serif;
+            }
+            span{
+            color: orange;
+        }
+        }
+        
+        .container{
+           background-image: url("access1p.png");
+           background-repeat: no-repeat;
+           background-position: right;
+           /* background:  rgb(150, 150, 150, 0.5);*/
+            margin-top: px;
+            
+        }
+       
+        form{
+            padding: 0px 10px 10px 10px;
+            margin: 0vw 10vw 0vw 10vw ;
+            
+        }
+        input{
+            width: 98%;
+            height: 60px;
+            margin-top: 5px;
+            border-radius: 10px;
+            background: rgb(255, 166, 2, 0.9);
+            border: none;
+            box-shadow: 2px 2px 2px 2px rgb(176, 114, 0);
+            cursor: pointer;
+            transition: transform(0.5s);
+        }
+        input::placeholder{
+            padding-left: 10px;
+        }
+        input:hover{
+            background: rgb(255, 200, 21);
+           transform: scale(1.1);
+           border: none;
+           border-bottom: 2px solid rgb(165, 107, 0);
+           transition: 0.5s;
+        }
+        label{
+            font-weight: bolder;
+        }
+        a{
+            color: black;
+        }
+        #radio{
+            width: 25px;
+            height: 25px;
+        }
+         span{
+                font-weight: bolder;
+                font-size: 18px;
+            }
+        #btn{
+            width: 200px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        button{
+            width: 200px;
+            height: 60px;
+            background: rgb(255, 200, 21);
+            border: none;
+            border-radius: 10px;
+            margin-left: 110px;
+            font-size: 20px;
+            font-weight: bold;
+            transition: transform(0.3);
+        }
+        button:hover{
+            transform: scale(1.1);
+            background: orange;
+            border: none;
+            border-bottom: 2px solid rgb(165, 107, 0);
+            transition: 0.5s;
+        }
+        .alr{
+            margin-left: 15vw;
+            font-size: 20px;
+        }
+        @media (min-width: 960px){
+             .cont{
+            background-image: url(bugger1r.png);
+            background-repeat: no-repeat;
+            background-position: left;
+            position: relative;
+            
+        }
+        .alr{
+            margin-left: 65vw;
+        }
+        h1{
+            margin-left: 35.5vw;
+        }
+        }
+    </style>
+</head>
+<body>
+    <h1><strong class="kart">M</strong>ARIO<strong class="kart">K</strong>ART <span class="mini">MINI MART &nbsp;</span></h1>
+    <div class="container">
+        <div class="cont">
+        <form>
+            <label for="firstName">FIRSTNAME:</label><br>
+            <input type="text" id="firstName" placeholder="FIRSTNAME"><BR><BR>
+            <label for="lastName">LASTNAME:</label>
+            <input type="text" id="lastName" placeholder="LASTNAME"><br><br>
+            <label for="email">EMAIL ADDRESS:</label>
+            <input type="email" id="email" placeholder="you@example.com"><br><br>
+            <label for="password">PASSWORD:</label>
+            <input type="password" id="password" name="password" placeholder="PASSWORD"><br><br>
+            <label for="password">CONFRIM PASSWORD:</label>
+            <input type="password" id="password" name="password" placeholder="CONFIRM PASSWORD"><br><br>
+            <input type="radio" id="radio"><span><a href="#">Terms & Policy</a></span><br><br>
+             <a href="homepage.html"><input type="Submit" id="btn"></a>
+        </form>
+        </div>
+            <span class="alr" >Already have an account</span>
+            <a href="signIn.html"><button>Log In</button></a><br><br>
+    </div>
+</body>
+</html>

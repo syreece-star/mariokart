@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background: black;
+            font-weight: bold;
+        }
+        header{
+            height: 60px;
+            width: 100%;
+            background: black;
+            border-bottom: 1px solid orange;
+            color: orange;
+            position: fixed;
+            top: 0;
+            z-index: 1;
+            padding-top: 5px;
+        }
+        nav{
+            display: flex;
+            margin-left: 1.5vw;
+        }
+        .logo{
+            font-size: 30px;
+            font-weight: bold;
+            padding-top: 15px;
+
+        }
+        .mario{
+            font-size: 18px;
+        }
+        sub{
+            font-size: 0.5rem;
+            margin-top: 17px;
+        }
+        .sign-in{
+            width: 18vw;
+            height: 40px;
+            color: orange;
+            background: black;
+            border: 1px solid orange;
+            margin-left: 17vw;
+            margin-top: 6px;
+            cursor: pointer;
+        }
+        .sign-up{
+            width: 18vw;
+            height: 40px;
+            color: aliceblue;
+            background: orange;
+            border: none;
+            margin-left: 9vw;
+            margin-top: 6px;
+            cursor: pointer
+        }
+        .sign-in:hover{
+            color: aliceblue;
+            background: orange;
+            box-shadow: 2px 1px 1px wheat;
+            transition: 0.7s;
+        }
+        .sign-up:hover{
+            background: black;
+            border: 1px solid orange;
+            box-shadow: 2px 1px 1px wheat;
+            transition: 0.4s;
+        }
+        .video-bg{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+         .line{
+                background:   rgb(150, 150, 150, 0.4);
+                height: 71vh;
+                padding-top: 250px;
+                padding-bottom: 1000px;
+                
+            }
+            .line-1{
+                text-align: center;
+                color: orange;
+            }
+            .next{
+                display: flex;
+                margin-top: 20vw;
+            }
+             .images{
+                background: orange;
+                width: 40%;
+                height: 31vh;
+                margin-left: 3vw;
+                margin-right: 3vw;
+            }
+            .images:hover{
+                transform: scale(1.2);
+                transition: 0.8s;
+            }
+            .images img{
+                width: 95%;
+                height: 30vh;
+                padding: 0.7vw;
+                cursor: pointer;
+               }
+            .image{
+                background: orange;
+                width: 40%;
+                height: 31vh;
+                margin-left: 3vw;
+                margin-right: 3vw;
+            }
+            .image:hover{
+                transform: scale(1.2);
+                transition: 0.8s;
+            }
+            .image img{
+                width: 95%;
+                height: 30vh;
+               padding: 0.7vw;
+               cursor: pointer;
+               }
+            .next-text{
+                text-align: center;
+                color: orange;
+                margin-top: 30px;
+            }
+            .access{
+                display: flex;
+                margin-top: 100px;
+                p{
+                    color: orange;
+                    padding-top: 60px;
+                    padding-left: 5px;
+                    padding-right: 10px;
+                }
+                img{
+                    width: 40vw;
+                    margin-right: 15px;
+                    border-radius: 80px 5px 5px 4px;
+                    border: 1px solid orange;
+                    cursor: pointer;
+                }
+                img:hover{
+                    transform: scale(1.1);
+                    transition: 0.8s;
+                }
+            }
+            .access-1{
+                display: flex;
+                gap: 15px;
+                margin-top: 100px;
+                p{
+                    color: orange;
+                    padding-top: 60px;
+                    margin-left: 5px;
+                    padding-right: 10px;
+                }
+                img{
+                    width: 42vw;
+                    height: 260px;
+                    margin-right: 10px;
+                    margin-left: 10px;
+                    border-radius: 5px 80px 5px 4px;
+                    border: 1px solid orange;
+                    cursor: pointer;
+                }
+                img:hover{
+                    transform: scale(1.1);
+                    transition: 0.8s;
+                }
+            }
+        @media (min-width: 1024px){
+        header{
+            height: 65px;
+            width: 100%;
+            border-bottom: 1px solid orange;
+            color: white;
+            position: fixed;
+        }
+             .logo{
+            font-size: 40px;
+            font-weight: bold;
+        }
+        .mario{
+            font-size: 18px;
+        }
+        sub{
+            margin-top: 17px;
+        }
+        .sign-in{
+            width: 10vw;
+            color: orange;
+            background: black;
+            border: 1px solid orange;
+            margin-left: 57vw;
+            margin-top: 5px;
+            cursor: pointer;
+        }
+        .sign-up{
+            width: 10vw;
+            color: aliceblue;
+            background: orange;
+            border: none;
+            margin-left: 2vw;
+            margin-top: 5px;
+            cursor: pointer
+        }
+        .sign-in:hover{
+            background: orange;
+            box-shadow: 2px 1px 1px wheat;
+            transition: 0.4s;
+        }
+        .sign-up:hover{
+            background: black;
+            border: 1px solid orange;
+            box-shadow: 2px 1px 1px wheat;
+            transition: 0.4s;
+        }
+         .line{
+                
+                background: none;
+                padding-top: 310px;
+                text-align: center;
+                color: orange;
+            }
+
+         .image{
+                background: orange;
+                width: 34%;
+                height: 32vh;
+                margin-left: 3vw;
+                margin-right: 3vw;
+            }
+             .image img{
+                width: 95%;
+                height: 30vh;
+               padding: 0.5vw;
+               }
+            .images{
+                background: orange;
+                width: 34%;
+                height: 32vh;
+                margin-left: 3vw;
+                margin-right: 3vw;
+            }
+             .images img{
+                width: 95%;
+                height: 30vh;
+                padding: 0.5vw;
+           }
+
+           .access{
+                display: flex;
+                margin-top: 200px;
+                margin-left: 110px;
+                p{
+                    color: orange;
+                    padding-top: 60px;
+                    padding-left: 200px;
+                    margin-right: 50px;
+                }
+                img{
+                    width: 20%;
+                    margin-right: 35px;
+                    border-radius: 80px 5px 5px 4px;
+                    border: 1px solid orange;
+                }
+                img:hover{
+                    transform: scale(1.1);
+                    transition: 0.8s;
+                }
+            }
+            .access-1{
+                display: flex;
+                gap: 35px;
+                margin-top: 160px;
+                margin-left: 190px;
+                p{
+                    color: orange;
+                    padding-top: 60px;
+                    margin-left: 120px;
+                    margin-right: 10px;
+                }
+                img{
+                    width: 20%;
+                    height: 260px;
+                    margin-right: 10px;
+                    margin-left: 30px;
+                    border-radius: 5px 80px 5px 4px;
+                    border: 1px solid orange;
+                    transition: transform(0.9);
+                }
+                img:hover{
+                    transform: scale(1.1);
+                }
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">M<span class="mario">ARIO</span></div>
+            <div class="logo">K<span class="mario">ART</span></div>
+            <sub class="mini">MINI MART</sub>
+            <a href="signIn.html"><button class="sign-in">SIGN IN </button></a>
+            <a href="signUp.html" ><button class="sign-up"> SIGN UP</button></a>
+        </nav>
+    </header>
+    
+    <video autoplay muted loop class="video-bg">
+        <source src="pizzy.MP4" type="video/mp4">
+    </video>
+    <div class="container">
+        <div class="line">
+           <div class="line-1">
+             <h5>WELCOME TO</h5>
+            <h1>MARIOKART MINI MART</h1>
+            <P>A modern mini mart showcasing everyday essentials and special deals.</P>
+            <p>Designed for quick browsing and a smooth, convenient shopping experience.</p><br><br>
+            
+           </div>
+           <div class="next">
+                <div class="image">
+                   <img src="shawarma.JPG">
+                   
+                </div>
+                <div class="images">
+                  <img src="pizza.JPG">
+                </div>
+                <div class="images">
+                  <img src="bugger1.JPG">
+                </div>
+            </div>
+            <div class="next-text">
+                <p>MARIOKART MINI MART <span>platform designed to provide quick access to everyday groceries, household items, and products in one place.</span></p>
+            </div>
+            <div class="access">
+                <p><strong>UNIQUE KITCHEN ACCESSORIES,</strong><br> essential tool and items used to prepare, cook serve, and store food effieciently in the kitchen.</p>
+                <img src="access.JPG">
+            </div>
+            <div class="access-1">
+                <img src="bev (2).JPG">
+                <p>Beverages are a wide ramge of drink designed to refresh, hydrate,<br> and energize, including water, soft drinks, juices, milk, and energy drinks.</p>
+            </div>
+            <br><br><br><br><br><br><br><br>
+
+            <footer>
+            
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

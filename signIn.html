@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background-image: url(pizza.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+        }
+        .container{
+            background: rgb(250, 210, 134, 0.5);
+            width: 80%;
+            height: 50vh;
+            margin: 30vw 10vw 10vw 10vw;
+            
+        }
+        .container:hover{
+            box-shadow: 1px 1px 2px orange;
+        }
+        form{
+            background: rgb(107, 107, 107, 0.5);
+            margin: 0.2vw;
+            height: 34.4vh;
+            padding: 10vw;
+        }
+        input{
+            width: 98%;
+            height: 6vh;
+            background: rgb(243, 159, 2, 0.5);
+            border: none;
+            border-bottom: 1px solid black;
+            cursor: pointer;
+        }
+        input::placeholder{
+            color: black;
+            padding-left: 10px;
+            font-size: 0.7rem;
+        }
+        input:hover{
+            box-shadow: 4px 5px 6px  rgb(189, 106, 3, 0.5);
+            background: orange;
+            transition: 0.9s;
+        }
+        #btn{
+            width: 40vw;
+            height: 6vh;
+            margin-left: 10vw;
+            margin-top: 5vh;
+            margin-bottom: 5vh;
+            background: linear-gradient(orange, white, orange);
+            border: none;
+            cursor: pointer;
+        }
+        button:hover{
+            box-shadow: 4px 5px 6px rgb(189, 106, 3, 0.5);
+            transition: 0.9;
+        }
+        span{
+            color: orange; 
+            font-size: 18px;
+            font-weight: bold;
+        }
+        a{
+            text-decoration: none;
+            color: rgb(189, 106, 3);
+        }
+
+        @media (min-width: 960px){
+            .container{
+                margin: 10vw;
+                height: 75vh;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form>
+
+            <input type="email" id="emil" placeholder="you@example.com"><br><br>
+            <input type="password" id="password"  placeholder="Password"><br><br>
+            <input type="submit" id="btn"><br>
+            <span>Do not have an account <a href="signUp.html">SIGN UP</a></span>
+
+        </form>
+    </div>
+</body>
+</html>

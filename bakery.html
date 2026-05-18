@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baking & Dairies</title>
+
+<style>
+
+body{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: black;
+}
+
+header{
+    background: orange;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header h1{
+    font-size: 30px;
+}
+
+.hero{
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url('cake.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 45vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-text h2{
+    color: orange;
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+.hero-text p{
+    color: white;
+    font-size: 18px;
+}
+
+.food-container{
+    margin-top: 50px;
+}
+
+.food-title{
+    color: orange;
+    margin-left: 20px;
+    font-size: 28px;
+}
+
+.stock-1{
+    margin-top: 50px;
+    margin-left: 20px;
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.stock-items{
+    background: orange;
+    width: 250px;
+    height: 420px;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: 0.5s;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+
+.stock-items:hover{
+    transform: scale(1.05);
+    background: orangered;
+}
+
+.stock-items img{
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.items{
+    margin-left: 10px;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.price{
+    margin-left: 10px;
+    color: white;
+    font-size: 18px;
+}
+
+.option{
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.option span{
+    color: black;
+    font-weight: bold;
+}
+
+select{
+    margin-left: 10px;
+    border: none;
+    background: orange;
+    cursor: pointer;
+}
+
+.stock-items:hover select{
+    background: orangered;
+}
+
+button{
+    width: 180px;
+    height: 45px;
+    border: none;
+    border-radius: 40px;
+    margin-top: 35px;
+    margin-left: 35px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.5s;
+}
+
+button:hover{
+    background: black;
+    color: white;
+    transform: scale(1.1);
+}
+
+
+           footer{
+                background:orange;
+                padding:50px 20px;
+                text-align:center;
+                color:black;
+            }
+
+            footer h1{
+                margin-bottom:20px;
+            }
+
+            footer p{
+                max-width:700px;
+                margin:auto;
+                line-height:1.7;
+            }
+
+            .top-btn{
+                display:inline-block;
+                margin-top:20px;
+                background:black;
+                color:white;
+                padding:12px 25px;
+                border-radius:30px;
+                text-decoration:none;
+            }
+
+            .footer-links{
+                margin-top:40px;
+            }
+
+            .footer-links h3{
+                margin:15px 0;
+            }
+
+            .cart{
+    margin-left: 10px;
+    background: rgb(223, 145, 1);
+    color: white;
+    width: 70px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 2px grey;
+    cursor: pointer;
+    position: fixed;
+    right: 20px;
+    top: 70px;
+    z-index: 10;
+    font-weight: bold;
+}
+
+#cart-count{
+    background: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 7px;
+    font-size: 12px;
+    position: absolute;
+    top: -8px;
+    right: -5px;
+}
+
+.cart-box{
+    position: fixed;
+    top: 100px;
+    right: -400px;
+    width: 320px;
+    max-height: 500px;
+    overflow-y: auto;
+    background: white;
+    border-radius: 15px;
+    padding: 15px;
+    z-index: 9999;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+    transition: 0.5s;
+}
+
+.cart-box.active{
+    right: 20px;
+}
+
+.cart-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid orange;
+    padding-bottom: 10px;
+}
+
+.cart-header h2{
+    margin: 0;
+    color: orange;
+}
+
+.close-cart{
+    font-size: 30px;
+    cursor: pointer;
+    color: red;
+    font-weight: bold;
+}
+
+.cart-item{
+    margin-top: 15px;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.cart-item h4{
+    margin: 0;
+    color: black;
+}
+
+.cart-item p{
+    margin: 5px 0;
+    color: grey;
+}
+
+.remove-btn{
+    background: red;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.remove-btn:hover{
+    background: darkred;
+}
+
+.cart-footer{
+    text-align: center;
+    margin-top: 20px;
+}
+
+#clearCart{
+    margin: 0;
+    background: orange;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    width: 90%;
+    font-weight: bold;
+}
+
+#clearCart:hover{
+    background: orangered;
+}
+
+#proceedToPayment{
+    margin: 0;
+}
+
+
+
+@media(max-width: 768px){
+
+.hero-text h2{
+    font-size: 30px;
+}
+
+.hero-text p{
+    font-size: 15px;
+}
+
+.stock-items{
+    width: 85%;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>MARIOKART BAKING & DAIRIES</h1>
+</header>
+
+<section class="hero">
+    <div class="hero-text">
+        <h2>Baking & Dairy Products</h2>
+        <p>Fresh baking essentials and quality dairy products for every kitchen</p>
+    </div>
+</section>
+
+<div class="food-container">
+
+<h2 class="food-title">Available Baking & Dairy Products</h2>
+
+<div class="stock-1">
+
+    <div class="stock-items">
+        <img src="milk.jpg">
+
+        <br><br>
+
+        <span class="items">Peak Milk</span>
+
+        <br><br>
+
+        <div class="price">
+            ₦800 - ₦8,500
+        </div>
+
+        <div class="option">
+            <span>Options:</span>
+
+            <select>
+                <option>Single Tin - ₦800</option>
+                <option>Pack - ₦4,500</option>
+                <option>Carton - ₦8,500</option>
+            </select>
+        </div>
+
+        <button>🛒 Add to Cart</button>
+    </div>
+
+    <div class="stock-items">
+        <img src="butter.jpg">
+
+        <br><br>
+
+        <span class="items">Butter</span>
+
+        <br><br>
+
+        <div class="price">
+            ₦1,200 - ₦5,500
+        </div>
+
+        <div class="option">
+            <span>Options:</span>
+
+            <select>
+                <option>Small Tub - ₦1,200</option>
+                <option>Medium Tub - ₦3,000</option>
+                <option>Big Tub - ₦5,500</option>
+            </select>
+        </div>
+
+        <button>🛒 Add to Cart</button>
+    </div>
+
+    <div class="stock-items">
+        <img src="flour.jpg">
+
+        <br><br>
+
+        <span class="items">Baking Flour</span>
+
+        <br><br>
+
+        <div class="price">
+            ₦2,500 - ₦18,000
+        </div>
+
+        <div class="option">
+            <span>Options:</span>
+
+            <select>
+                <option>2kg Bag - ₦2,500</option>
+                <option>10kg Bag - ₦9,000</option>
+                <option>25kg Bag - ₦18,000</option>
+            </select>
+        </div>
+
+        <button>🛒 Add to Cart</button>
+    </div>
+
+    <div class="stock-items">
+        <img src="cheese.jpg">
+
+        <br><br>
+
+        <span class="items">Cheddar Cheese</span>
+
+        <br><br>
+
+        <div class="price">
+            ₦1,500 - ₦7,000
+        </div>
+
+        <div class="option">
+            <span>Options:</span>
+
+            <select>
+                <option>Small Pack - ₦1,500</option>
+                <option>Medium Pack - ₦4,000</option>
+                <option>Big Pack - ₦7,000</option>
+            </select>
+        </div>
+
+        <button>🛒 Add to Cart</button>
+    </div>
+
+    <div class="stock-items">
+        <img src="egg.jpg">
+
+        <br><br>
+
+        <span class="items">Fresh Eggs</span>
+
+        <br><br>
+
+        <div class="price">
+            ₦1,200 - ₦6,500
+        </div>
+
+        <div class="option">
+            <span>Options:</span>
+
+            <select>
+                <option>Half Crate - ₦1,200</option>
+                <option>One Crate - ₦2,500</option>
+                <option>Three Crates - ₦6,500</option>
+            </select>
+        </div>
+
+        <button>🛒 Add to Cart</button>
+    </div>
+
+    <div class="stock-items">
+        <img src="cake.jpg">
+
+        <br><br>
+
+        <span class="items">Vanilla Cake</span>
+
+        <br><br>
+
+        <div class="price">
+            ₦3,500 - ₦15,000
+        </div>
+
+        <div class="option">
+            <span>Options:</span>
+
+            <select>
+                <option>Small Cake - ₦3,500</option>
+                <option>Medium Cake - ₦8,000</option>
+                <option>Large Cake - ₦15,000</option>
+            </select>
+        </div>
+
+        <button>🛒 Add to Cart</button>
+    </div>
+
+</div>
+   <div class="stock-1">
+        <div class="stock-items">
+            <img src="yoghurt.jpg">
+
+            <br><br>
+
+            <span class="items">Strawberry Yoghurt</span>
+
+            <br><br>
+
+            <div class="price">
+                ₦700 - ₦5,500
+            </div>
+
+            <div class="option">
+                <span>Options:</span>
+
+                <select>
+                    <option>Small Cup - ₦700</option>
+                    <option>Pack - ₦2,500</option>
+                    <option>Carton - ₦5,500</option>
+                </select>
+            </div>
+
+            <button>🛒 Add to Cart</button>
+        </div>
+
+        <div class="stock-items">
+            <img src="icecream.jpg">
+
+            <br><br>
+
+            <span class="items">Vanilla Ice Cream</span>
+
+            <br><br>
+
+            <div class="price">
+                ₦1,500 - ₦9,000
+            </div>
+
+            <div class="option">
+                <span>Options:</span>
+
+                <select>
+                    <option>Small Cup - ₦1,500</option>
+                    <option>Medium Tub - ₦4,500</option>
+                    <option>Large Tub - ₦9,000</option>
+                </select>
+            </div>
+
+            <button>🛒 Add to Cart</button>
+        </div>
+
+        <div class="stock-items">
+            <img src="bread.jpg">
+
+            <br><br>
+
+            <span class="items">Sliced Bread</span>
+
+            <br><br>
+
+            <div class="price">
+                ₦1,000 - ₦4,500
+            </div>
+
+            <div class="option">
+                <span>Options:</span>
+
+                <select>
+                    <option>Small Loaf - ₦1,000</option>
+                    <option>Medium Loaf - ₦2,500</option>
+                    <option>Big Loaf - ₦4,500</option>
+                </select>
+            </div>
+
+            <button>🛒 Add to Cart</button>
+        </div>
+
+        <div class="stock-items">
+            <img src="custard.jpg">
+
+            <br><br>
+
+            <span class="items">Custard Powder</span>
+
+            <br><br>
+
+            <div class="price">
+                ₦900 - ₦6,800
+            </div>
+
+            <div class="option">
+                <span>Options:</span>
+
+                <select>
+                    <option>Small Tin - ₦900</option>
+                    <option>Medium Tin - ₦3,000</option>
+                    <option>Big Tin - ₦6,800</option>
+                </select>
+            </div>
+
+            <button>🛒 Add to Cart</button>
+        </div>
+
+        <div class="stock-items">
+            <img src="whippingcream.jpg">
+
+            <br><br>
+
+            <span class="items">Whipping Cream</span>
+
+            <br><br>
+
+            <div class="price">
+                ₦1,800 - ₦8,500
+            </div>
+
+            <div class="option">
+                <span>Options:</span>
+
+                <select>
+                    <option>Small Can - ₦1,800</option>
+                    <option>Medium Can - ₦4,500</option>
+                    <option>Large Can - ₦8,500</option>
+                </select>
+            </div>
+
+            <button>🛒 Add to Cart</button>
+        </div>
+
+        <div class="stock-items">
+            <img src="chocolate.jpg">
+
+            <br><br>
+
+            <span class="items">Chocolate Syrup</span>
+
+            <br><br>
+
+            <div class="price">
+                ₦1,200 - ₦7,000
+            </div>
+
+            <div class="option">
+                <span>Options:</span>
+
+                <select>
+                    <option>Small Bottle - ₦1,200</option>
+                    <option>Medium Bottle - ₦3,500</option>
+                    <option>Large Bottle - ₦7,000</option>
+                </select>
+            </div>
+
+            <button>🛒 Add to Cart</button>
+        </div>
+
+        <div class="stock-items">
+            <img src="margarine.jpg">
+
+            <br><br>
+
+            <span class="items">Blue Band Margarine</span>
+
+            <br><br>
+
+            <div class="price">
+                ₦1,000 - ₦6,000
+            </div>
+
+            <div class="option">
+                <span>Options:</span>
+
+                <select>
+                    <option>Small Size - ₦1,000</option>
+                    <option>Medium Size - ₦3,000</option>
+                    <option>Large Size - ₦6,000</option>
+                </select>
+            </div>
+
+            <button>🛒 Add to Cart</button>
+        </div>
+
+        <div class="stock-items">
+            <img src="cupcake.jpg">
+
+            <br><br>
+
+            <span class="items">Chocolate Cupcakes</span>
+
+            <br><br>
+
+            <div class="price">
+                ₦2,500 - ₦10,000
+            </div>
+
+            <div class="option">
+                <span>Options:</span>
+
+                <select>
+                    <option>4 Pieces - ₦2,500</option>
+                    <option>8 Pieces - ₦5,500</option>
+                    <option>12 Pieces - ₦10,000</option>
+                </select>
+            </div>
+
+            <button>🛒 Add to Cart</button>
+        </div>
+    </div>
+
+</div>
+<br><br><br><br><br><br>
+
+
+     <footer>
+
+    <h1>MARIOKART MINI MART</h1>
+
+    <p>
+        Built for convenience and speed, this shopping experience focuses on easy navigation,
+        fast product discovery, and smooth checkout flow.
+    </p>
+
+    <a href="#top" class="top-btn">BACK TO TOP</a>
+
+    <div class="footer-links">
+        <h3>Contact Us</h3>
+        <h3>Policies</h3>
+        <h3>Companies</h3>
+        <h3>About Us</h3>
+    </div>
+
+</footer>
+
+<script src="cart.js"></script>
+
+</body>
+</html>
